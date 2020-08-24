@@ -1,86 +1,90 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 const intitialRegisterForm = {
-  name: '',
-  email: '',
-  password: '',
+  street_address: '',
+  city: '',
+  zip: '',
+  property_type: '',
+  leasable_area: '',
+  parking: '',
+  upgrades: '',
+  special_remarks: ''
 };
 
 const intitialRegisterFormErrors = {
-  name: '',
-  email: '',
-  password: '',
+  street_address: '',
+  city: '',
+  zip: '',
+  property_type: '',
+  leasable_area: '',
+  parking: '',
+  // upgrades: '',
+  // special_remarks: ''
 };
 
 
-export default function Register(props) {
-
+const Register = (props) => {
   const [userRegister, setUserRegister] = useState(intitialRegisterForm)
   const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
 
-  const getUser = () => {
-    axios.get('')
+  let history = useHistory
+
+  const register = event => {
+    event.preventDefault()
+    axiosWithAuth().post('/api/auth/register')
       .then(res => {
-        debugger
+        console.log(res)
+        history.push('/login')
       })
       .catch(err => {
         console.log(err)
       })
   }
-
-  const postUser = () => {
-    axios.post('')
-      .then(res => {
-        debugger
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {
-
-      })
-  }
-
   return (
-    <form>
-      <div>
-        <h2>Register</h2>
-      </div>
+    <>
+      <form>
+        <div>
+          <h2>Register</h2>
+        </div>
 
-      <div>
-        <label>Name:&nbsp;
+        <div>
+          <label>Name:&nbsp;
           <input
-            type='text'
-            name='name'
-            // value={}
-            placeholder='name'
-          // onChange={}
-          />
-        </label>
+              type='text'
+              name='name'
+              // value={}
+              placeholder='name'
+            // onChange={}
+            />
+          </label>
 
-        <label>Email:&nbsp;
+          <label>Email:&nbsp;
           <input
-            type='email'
-            name='email'
-            // value={}
-            placeholder='email'
-          // onChange={}
-          />
-        </label>
+              type='email'
+              name='email'
+              // value={}
+              placeholder='email'
+            // onChange={}
+            />
+          </label>
 
-        <label>Password:&nbsp;
+          <label>Password:&nbsp;
           <input
-            type='password'
-            name='password'
-            // value={}
-            placeholder='password'
-          // onChange={}
-          />
-        </label>
-      </div>
-    </form>
+              type='password'
+              name='password'
+              // value={}
+              placeholder='password'
+            // onChange={}
+            />
+          </label>
+        </div>
+      </form>
+      <button onClick={register}>test</button>
+    </>
   )
 }
+
+export default Register

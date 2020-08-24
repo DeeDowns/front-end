@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
@@ -20,6 +20,7 @@ export default function Login(props) {
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
 
+
   //so we can redirect to register page
   let history = useHistory()
 
@@ -29,7 +30,7 @@ export default function Login(props) {
   const login = event => {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
-    axiosWithAuth().post(/*'endpoint goes here', login credentials to send*/)
+    axiosWithAuth().post('/api/auth/login')
       .then(res => {
         console.log(res)
 
