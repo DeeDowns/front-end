@@ -1,8 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
+import axios from 'axios'
+import LoginForm from './LoginForm'
+
+const intitialLoginForm = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+const intitialLoginFormErrors = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+
 export default function Login(props) {
+
+  const [userLogin, setUserLogin] = useState(intitialLoginForm)
+  const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
 
   //so we can redirect to register page
   let history = useHistory()
@@ -14,23 +33,24 @@ export default function Login(props) {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
     axiosWithAuth().post(/*'endpoint goes here', login credentials to send*/)
-    .then(res => {
-      console.log(res)
-      
-      //send token to local storage
-      // localStorage.setItem('token', res.data.payload)
+      .then(res => {
+        console.log(res)
 
-      //redirect to register page
-      //history.push(route to register '/register')
-    })
-    .catch(err => {
-      console.log(err)
-    })
+        //send token to local storage
+        // localStorage.setItem('token', res.data.payload)
+
+        //redirect to register page
+        //history.push(route to register '/register')
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return (
-    <>
-    </>
+    <div>
+      <LoginForm />
+    </div>
   )
 }
 

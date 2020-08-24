@@ -1,17 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import './index.css';
-import App from '../src/components/App';
 import { BrowserRouter as Router } from 'react-router-dom'
-
+import './index.css';
+import App from '../src/components/App'
 import * as serviceWorker from './serviceWorker';
 
 render(
-  <Router>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Router>
       <App />
-    </React.StrictMode>
-  </Router>
+    </Router>
+  </React.StrictMode>
   , document.getElementById('root')
 );
 

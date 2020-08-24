@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom'
 
 import Home from './Home'
-import AllProperties from './All_Properties'
-import EditProperty from './Register'
+import AllProperties from './AllProperties'
+import EditProperty from './EditProperties'
 import Property from './Property'
 import Login from './Login'
 import Register from './Register'
