@@ -11,7 +11,8 @@ import './index.css';
 import App from '../src/components/App';
 
 import { BrowserRouter as Router } from 'react-router-dom'
-
+import './index.css';
+import App from '../src/components/App'
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

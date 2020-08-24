@@ -30,7 +30,6 @@ export default function Login(props) {
 
   return (
     <>
-
       <button onClick={login}>test</button>
     </>
   )

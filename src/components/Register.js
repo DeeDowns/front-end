@@ -2,9 +2,35 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-export default function Register(props) {
-  let history = useHistory
 
+const intitialRegisterForm = {
+  street_address: '',
+  city: '',
+  zip: '',
+  property_type: '',
+  leasable_area: '',
+  parking: '',
+  upgrades: '',
+  special_remarks: ''
+};
+
+const intitialRegisterFormErrors = {
+  street_address: '',
+  city: '',
+  zip: '',
+  property_type: '',
+  leasable_area: '',
+  parking: '',
+  // upgrades: '',
+  // special_remarks: ''
+};
+
+
+const Register = (props) => {
+  const [userRegister, setUserRegister] = useState(intitialRegisterForm)
+  const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
+  
+  let history = useHistory
 
   const register = event => {
     event.preventDefault()
@@ -21,5 +47,6 @@ export default function Register(props) {
     <>
       <button onClick={register}>test</button>
     </>
-  )
-}
+  ) 
+  }
+   
