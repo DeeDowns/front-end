@@ -31,7 +31,7 @@ export default function Login(props) {
   const login = event => {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
-    axiosWithAuth().post('/api/auth/login')
+    axiosWithAuth().post('/api/auth/login', userLogin)
     .then(res => {
       console.log(res)
 
@@ -39,7 +39,7 @@ export default function Login(props) {
       // localStorage.setItem('token', res.data.payload)
 
       //redirect to register page
-      //history.push(route to register '/register')
+      // history.push('/properties')
     }) 
     .catch(err => {
       console.log(err)
@@ -47,7 +47,7 @@ export default function Login(props) {
   }
 
   return (
-    <form>
+    <form onSubmit={login}>
        <div>
         <h2>Login</h2>
       </div>
@@ -83,7 +83,7 @@ export default function Login(props) {
           />
         </label>
       </div>
-        <button onClick={login}>test</button>
+        <button>test</button>
     </form>
     )
   

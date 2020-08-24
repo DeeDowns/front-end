@@ -30,11 +30,11 @@ const Register = (props) => {
   const [userRegister, setUserRegister] = useState(intitialRegisterForm)
   const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
   
-  let history = useHistory
+  let history = useHistory()
 
   const register = event => {
     event.preventDefault()
-    axiosWithAuth().post('/api/auth/register')
+    axiosWithAuth().post('/api/auth/register', userRegister)
     .then(res => {
       console.log(res)
       history.push('/login')
@@ -45,7 +45,7 @@ const Register = (props) => {
   }
   return (
     <>
-      <button onClick={register}>test</button>
+      <button>test</button>
     </>
   ) 
   }
