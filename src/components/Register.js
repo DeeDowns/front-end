@@ -1,29 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import RegisterForm from './RegisterForm'
 
 
 const intitialRegisterForm = {
-  street_address: '',
-  city: '',
-  zip: '',
-  property_type: '',
-  leasable_area: '',
-  parking: '',
-  upgrades: '',
-  special_remarks: ''
+  name: '',
+  email: '',
+  password: '',
 };
 
 const intitialRegisterFormErrors = {
-  street_address: '',
-  city: '',
-  zip: '',
-  property_type: '',
-  leasable_area: '',
-  parking: '',
-  // upgrades: '',
-  // special_remarks: ''
+  name: '',
+  email: '',
+  password: '',
 };
 
 
@@ -62,94 +51,32 @@ export default function Register(props) {
       </div>
 
       <div>
-        <label>Street Address:&nbsp;
+        <label>Name:&nbsp;
           <input
             type='text'
-            name='street_address'
+            name='name'
             // value={}
-            placeholder='street address'
+            placeholder='name'
           // onChange={}
           />
         </label>
 
-        <label>City:&nbsp;
+        <label>Email:&nbsp;
           <input
-            type='text'
-            name='city'
+            type='email'
+            name='email'
             // value={}
-            placeholder='City'
+            placeholder='email'
           // onChange={}
           />
         </label>
 
-        <label>Zip Code:&nbsp;
+        <label>Password:&nbsp;
           <input
-            type='text'
-            name='zip'
+            type='password'
+            name='password'
             // value={}
-            placeholder='Zip Code'
-          // onChange={}
-          />
-        </label>
-
-        <label>Zip Code:&nbsp;
-          <input
-            type='text'
-            name='zip'
-            // value={}
-            placeholder='Zip Code'
-          // onChange={}
-          />
-        </label>
-
-        <label name='type'>Property Type:&nbsp;
-          <select
-            name='property_type'
-          // onChange={}
-          //value={}
-          >
-            <option value=''>-- Select A Type --</option>
-            <option value='house'>House</option>
-            <option value='apartment'>Apartment</option>
-            <option value='Condo'>Condo</option>
-          </select>
-        </label>
-
-        <label>Number of Rooms:&nbsp;
-          <input
-            type='text'
-            name='leasable_area'
-            // value={}
-            placeholder='Number of Rooms'
-          // onChange={}
-          />
-        </label>
-        <label>Parking Available?:&nbsp;
-          <input
-            type='text'
-            name='parking'
-            // value={}
-            placeholder='Parking Available?'
-          // onChange={}
-          />
-        </label>
-
-        <label>Additional Upgrades:&nbsp;
-          <input
-            type='text'
-            name='upgrades'
-            // value={}
-            placeholder='Additional Upgrades'
-          // onChange={}
-          />
-        </label>
-
-        <label>Special Remarks:&nbsp;
-          <input
-            type='text'
-            name='special_remarks'
-            // value={}
-            placeholder='Special Remarks'
+            placeholder='password'
           // onChange={}
           />
         </label>
