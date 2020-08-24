@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-import { Link, Route } from 'react-router-dom'
-
-=======
 import { Link, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperty } from '../store/actions/propertiesActions'
->>>>>>> dcf3c12618e1eedea9898fb865dbff0f1f9d1ec6
 import Home from './Home'
 import AllProperties from './AllProperties'
 import EditProperty from './EditProperty'
