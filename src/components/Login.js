@@ -2,7 +2,25 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
+
+const intitialLoginForm = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+const intitialLoginFormErrors = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+
 export default function Login(props) {
+
+  const [userLogin, setUserLogin] = useState(intitialLoginForm)
+  const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
+
 
   //so we can redirect to register page
   let history = useHistory()
@@ -29,9 +47,45 @@ export default function Login(props) {
   }
 
   return (
-    <>
-      <button onClick={login}>test</button>
-    </>
-  )
+    <form>
+       <div>
+        <h2>Login</h2>
+      </div>
+
+      <div>
+        <label>Name:&nbsp;
+          <input
+            type='text'
+            name='name'
+            // value={}
+            placeholder='name'
+          // onChange={}
+          />
+        </label>
+
+        <label>Email:&nbsp;
+          <input
+            type='email'
+            name='email'
+            // value={}
+            placeholder='email'
+          // onChange={}
+          />
+        </label>
+
+        <label>Password:&nbsp;
+          <input
+            type='password'
+            name='password'
+            // value={}
+            placeholder='password'
+          // onChange={}
+          />
+        </label>
+      </div>
+        <button onClick={login}>test</button>
+    </form>
+    )
+  
 }
 
