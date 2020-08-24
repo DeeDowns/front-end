@@ -13,16 +13,16 @@ export default function Login(props) {
   const login = event => {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
-    axiosWithAuth().post(/*'endpoint goes here', login credentials to send*/)
+    axiosWithAuth().post('/api/auth/login')
     .then(res => {
       console.log(res)
-      
+
       //send token to local storage
       // localStorage.setItem('token', res.data.payload)
 
       //redirect to register page
       //history.push(route to register '/register')
-    })
+    }) 
     .catch(err => {
       console.log(err)
     })
@@ -30,6 +30,8 @@ export default function Login(props) {
 
   return (
     <>
+
+      <button onClick={login}>test</button>
     </>
   )
 }
