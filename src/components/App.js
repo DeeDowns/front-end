@@ -90,4 +90,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchProperty } )(App);
+export default connect(mapStateToProps, { fetchProperty })(App);
