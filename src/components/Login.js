@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useHistory } from 'react'
 import axios from 'axios'
 import LoginForm from './LoginForm'
+import axiosWithAuth from '../utils/axiosWithAuth'
+
+
 
 const intitialLoginForm = {
   name: '',
@@ -19,33 +22,71 @@ export default function Login(props) {
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
 
-  const getUserLogin = () => {
-    axios.get('')
-      .then(res => {
-        debugger
-      })
-      .catch(err => {
-        console.log(err)
-      })
+
+  //so we can redirect to register page
+  let history = useHistory()
+
+  //login event handler
+  //the login goes on the onSubmit of the form
+  //wont work as of now without endpoints
+  const login = event => {
+    event.preventDefault()
+    //axiosWithAuth post request to get token from server
+    axiosWithAuth().post('/api/auth/login', userLogin)
+    .then(res => {
+      console.log(res)
+
+      //send token to local storage
+      // localStorage.setItem('token', res.data.payload)
+
+      //redirect to register page
+      // history.push('/properties')
+    }) 
+    .catch(err => {
+      console.log(err)
+    })
   }
-
-  const postUserLogin = () => {
-    axios.post('')
-      .then(res => {
-        debugger
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {
-
-      })
-  }
-
 
   return (
-    <div>
-      <LoginForm />
-    </div>
-  )
+    <form onSubmit={login}>
+       <div>
+        <h2>Login</h2>
+      </div>
+
+      <div>
+        <label>Name:&nbsp;
+          <input
+            type='text'
+            name='name'
+            // value={}
+            placeholder='name'
+          // onChange={}
+          />
+        </label>
+
+        <label>Email:&nbsp;
+          <input
+            type='email'
+            name='email'
+            // value={}
+            placeholder='email'
+          // onChange={}
+          />
+        </label>
+
+        <label>Password:&nbsp;
+          <input
+            type='password'
+            name='password'
+            // value={}
+            placeholder='password'
+          // onChange={}
+          />
+        </label>
+      </div>
+        <button>test</button>
+    </form>
+    )
+  
 }
+
