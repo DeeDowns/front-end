@@ -8,6 +8,7 @@ import EditProperty from './EditProperties'
 import Property from './Property'
 import Login from './Login'
 import Register from './Register'
+import PrivateRoute from './PrivateRoute'
 
 
 
@@ -50,17 +51,17 @@ function App() {
         <Login />
       </Route>
 
-      <Route exact path='/edit-property/:id'>
+      <PrivateRoute exact path='/edit-property/:id'>
         <EditProperty />
-      </Route>
+      </PrivateRoute>
 
-      <Route exact path='/properties/:id'>
+      <PrivateRoute exact path='/properties/:id'>
         <Property />
-      </Route>
+      </PrivateRoute>
 
-      <Route exact path='/properties'>
+      <PrivateRoute exact path='/properties'>
         <AllProperties />
-      </Route>
+      </PrivateRoute>
 
       <Route exact path='/'>
         <Home />
