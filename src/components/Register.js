@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import RegisterForm from './RegisterForm'
+
+
 const intitialRegisterForm = {
   street_address: '',
   city: '',
@@ -12,10 +15,22 @@ const intitialRegisterForm = {
   special_remarks: ''
 };
 
+const intitialRegisterFormErrors = {
+  street_address: '',
+  city: '',
+  zip: '',
+  property_type: '',
+  leasable_area: '',
+  parking: '',
+  // upgrades: '',
+  // special_remarks: ''
+};
+
 
 export default function Register(props) {
 
-  const [userRegister, setUserRegister] = useState([])
+  const [userRegister, setUserRegister] = useState(intitialRegisterForm)
+  const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
 
   const getUser = () => {
     axios.get('')
@@ -41,7 +56,8 @@ export default function Register(props) {
   }
 
   return (
-    <>
-    </>
+    <div>
+      <RegisterForm />
+    </div>
   )
 }

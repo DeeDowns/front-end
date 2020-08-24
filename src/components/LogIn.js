@@ -6,11 +6,18 @@ const intitialLoginForm = {
   name: '',
   email: '',
   password: '',
-}
+};
+
+const intitialLoginFormErrors = {
+  name: '',
+  email: '',
+  password: '',
+};
 
 export default function Login(props) {
 
-  const [userLogin, setUserLogin] = useState([])
+  const [userLogin, setUserLogin] = useState(intitialLoginForm)
+  const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
 
   const getUserLogin = () => {
     axios.get('')
@@ -34,6 +41,7 @@ export default function Login(props) {
 
       })
   }
+
 
   return (
     <div>
