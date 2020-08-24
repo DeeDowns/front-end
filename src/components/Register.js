@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-
-import RegisterForm from './RegisterForm'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 const intitialRegisterForm = {
@@ -27,37 +26,29 @@ const intitialRegisterFormErrors = {
 };
 
 
-export default function Register(props) {
-
+const Register = (props) => {
   const [userRegister, setUserRegister] = useState(intitialRegisterForm)
   const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
+  
+  let history = useHistory
 
-  const getUser = () => {
-    axios.get('')
-      .then(res => {
-        debugger
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  const register = event => {
+    event.preventDefault()
+    axiosWithAuth().post('/api/auth/register')
+    .then(res => {
+      console.log(res)
+      history.push('/login')
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
-
-  const postUser = () => {
-    axios.post('')
-      .then(res => {
-        debugger
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {
-
-      })
-  }
-
   return (
-    <div>
-      <RegisterForm />
-    </div>
-  )
-}
+    <>
+      <button onClick={register}>test</button>
+    </>
+  ) 
+  }
+
+  export default Register
+   

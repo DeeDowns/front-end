@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-import axios from 'axios'
-import LoginForm from './LoginForm'
 
 const intitialLoginForm = {
   name: '',
@@ -23,6 +21,7 @@ export default function Login(props) {
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
 
+
   //so we can redirect to register page
   let history = useHistory()
 
@@ -32,25 +31,61 @@ export default function Login(props) {
   const login = event => {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
-    axiosWithAuth().post(/*'endpoint goes here', login credentials to send*/)
-      .then(res => {
-        console.log(res)
+    axiosWithAuth().post('/api/auth/login')
+    .then(res => {
+      console.log(res)
 
-        //send token to local storage
-        // localStorage.setItem('token', res.data.payload)
+      //send token to local storage
+      // localStorage.setItem('token', res.data.payload)
 
-        //redirect to register page
-        //history.push(route to register '/register')
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      //redirect to register page
+      //history.push(route to register '/register')
+    }) 
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   return (
-    <div>
-      <LoginForm />
-    </div>
-  )
+    <form>
+       <div>
+        <h2>Login</h2>
+      </div>
+
+      <div>
+        <label>Name:&nbsp;
+          <input
+            type='text'
+            name='name'
+            // value={}
+            placeholder='name'
+          // onChange={}
+          />
+        </label>
+
+        <label>Email:&nbsp;
+          <input
+            type='email'
+            name='email'
+            // value={}
+            placeholder='email'
+          // onChange={}
+          />
+        </label>
+
+        <label>Password:&nbsp;
+          <input
+            type='password'
+            name='password'
+            // value={}
+            placeholder='password'
+          // onChange={}
+          />
+        </label>
+      </div>
+        <button onClick={login}>test</button>
+    </form>
+    )
+  
 }
 

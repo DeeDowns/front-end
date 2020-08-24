@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom'
-
+import { connect } from 'react-redux'
+import { fetchProperty } from '../store/actions/propertiesActions'
 import Home from './Home'
 import AllProperties from './AllProperties'
-import EditProperty from './EditProperties'
+import EditProperty from './EditProperty'
 import Property from './Property'
 import Login from './Login'
 import Register from './Register'
 import PrivateRoute from './PrivateRoute'
+import AddProperty from './AddProperty';
 
 
 
-function App() {
+function App(props) {
   const [properties, setProperties] = useState([]);
 
   const getProperties = () => {
@@ -24,6 +26,8 @@ function App() {
         console.log(err)
       })
   }
+
+  console.log(props)
 
 
   // useEffect(() => {
@@ -40,6 +44,9 @@ function App() {
           <Link to='/login'>Login</Link>
           <Link to='/properties'>Properties</Link>
           <Link to='/register'>Register</Link>
+          {/* these links below are temporary, just need them to render so I can work with them */}
+          <Link to='/edit-property/:id'>edit</Link>
+          <Link to='/add-property/:id'>add</Link>
         </div>
       </nav>
 
@@ -53,6 +60,10 @@ function App() {
 
       <PrivateRoute exact path='/edit-property/:id'>
         <EditProperty />
+      </PrivateRoute>
+
+      <PrivateRoute exact path='/add-property/:id'>
+        <AddProperty />
       </PrivateRoute>
 
       <PrivateRoute exact path='/properties/:id'>
@@ -70,4 +81,13 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+
+  return {
+    properties: state.propertiesReducer.properties,
+    isLoading: state.propertiesReducer.isLoading,
+    error: state.propertiesReducer.error
+  }
+}
+
+export default connect(mapStateToProps, { fetchProperty } )(App);
