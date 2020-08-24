@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import LoginForm from './LoginForm'
 
 const intitialLoginForm = {
   name: '',
@@ -6,11 +8,11 @@ const intitialLoginForm = {
   password: '',
 }
 
-export default function LogIn(props) {
+export default function Login(props) {
 
   const [userLogin, setUserLogin] = useState([])
 
-  const getUser = () => {
+  const getUserLogin = () => {
     axios.get('')
       .then(res => {
         debugger
@@ -20,7 +22,7 @@ export default function LogIn(props) {
       })
   }
 
-  const postUser = () => {
+  const postUserLogin = () => {
     axios.post('')
       .then(res => {
         debugger
@@ -34,7 +36,8 @@ export default function LogIn(props) {
   }
 
   return (
-    <>
-    </>
+    <div>
+      <LoginForm />
+    </div>
   )
 }
