@@ -4,6 +4,9 @@ import { useParams, useHistory } from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { fetchProperties } from '../store/actions/propertiesActions'
 
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+
+
 
 const initialEditInputs = {
   streetAddress: '',
@@ -33,9 +36,9 @@ const EditProperty = (props) => {
     })
   }
 
-  //get listing by id 
-  //setEditInputs to the response data
-  //
+  //useEffect, dependency aray [id]
+  ///get property by id
+  //setEditInputs to res data
   
 
 
@@ -51,119 +54,191 @@ const EditProperty = (props) => {
   }
 
   return (
-    <form onSubmit={saveEdits}>
+    <Form onSubmit={saveEdits}>
+      
       <h1>Edit Property/Listing</h1>
-      <label>Street Address</label>
-        <input
+      <FormGroup>
+      <Label>Street Address</Label>
+        <Input
           type='text'
           name='streetAddress'
           id='streetAddress'
           value={editInputs.streetAddress}
           onChange={handleChange}
         />
-
-      <label>City</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+      <Label>City</Label>
+        <Input
           type='text'
           name='city'
           id='city'
           value={editInputs.city}
           onChange={handleChange}
         />
-
-      <label>State</label>
-        <input
-          type='dropdown'
+      </FormGroup>
+      <FormGroup>
+      <Label>State</Label>
+        <Input
+          type='select'
           name='state'
           id='state'
           value={editInputs.state}
           onChange={handleChange}
-        />
-
-      <label>Zip Code</label>
-        <input
+        >
+            <option value='AL'>Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </Input>
+      </FormGroup>
+      <FormGroup>
+      <Label>Zip Code</Label>
+        <Input
           type='text'
           name='zip'
           id='zip'
           value={editInputs.zip}
           onChange={handleChange}
         />
-
-      <label>Property Type</label>
-        <input
-          type='dropdown'
+      </FormGroup>
+      <FormGroup>
+      <Label>Property Type</Label>
+        <Input
+          type='select'
           name='propertyType'
           id='propertyType'
           value={editInputs.propertyType}
           onChange={handleChange}
-        />
-
-      <label>Number of Bedrooms</label>
-        <input
+        >
+            <option>House </option>
+            <option>Townhouse </option>
+            <option>Apartment </option>
+            <option>Condominium </option>
+            <option>Room </option>
+            <option>Other </option>
+        </Input>
+      </FormGroup>
+      <FormGroup>
+      <Label>Number of Bedrooms</Label>
+        <Input
           type='number'
           name='bedrooms'
           id='bedrooms'
           value={editInputs.bedrooms}
           onChange={handleChange}
         />
-
-      <label>Number of Bathrooms</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+      <Label>Number of Bathrooms</Label>
+        <Input
           type='number'
           name='bathrooms'
           id='bathrooms'
           value={editInputs.bathrooms}
           onChange={handleChange}
         />
-
-    <label>Number of Beds</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+    <Label>Number of Beds</Label>
+        <Input
           type='number'
           name='beds'
           id='beds'
           value={editInputs.beds}
           onChange={handleChange}
         />
-
-    <label>Number of Guests Included</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+    <Label>Number of Guests Included</Label>
+        <Input
           type='number'
           name='guestsIncluded'
           id='guestsIncluded'
           value={editInputs.guestsIncluded}
           onChange={handleChange}
         />
-
-      <label>Accommodates</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+      <Label>Accommodates</Label>
+        <Input
           type='number'
           name='accommodates'
           id='accommodates'
           value={editInputs.accommodates}
           onChange={handleChange}
         />
-
-      <label>Min Nights</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+      <Label>Min Nights</Label>
+        <Input
           type='number'
           name='minNights'
           id='minNights'
           value={editInputs.minNights}
           onChange={handleChange}
         />
-
-      <label>Max Nights</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+      <Label>Max Nights</Label>
+        <Input
           type='number'
           name='maxNights'
           id='maxNights'
           value={editInputs.maxNights}
           onChange={handleChange}
         />
+        </FormGroup>
+      <Button color='success'>Save Changes</Button>
 
-      <button>Save Changes</button>
-
-    </form>
+    </Form>
   )
 }
 
@@ -176,4 +251,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchProperties })(EditProperty)
+export default connect(mapStateToProps, { fetchProperties})(EditProperty)

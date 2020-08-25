@@ -1,26 +1,25 @@
-import { FETCH_LISTING_START, FETCH_LISTING_SUCCESS, FETCH_LISTING_FAILURE } from '../actions/listingActions'
+import { POST_LISTING_START, POST_LISTING_SUCCESS, POST_LISTING_FAILURE } from '../actions/listingActions'
 
 const initialState = {
-    listing: {},
+    properties: [],
     isLoading: false,
     error: ''
 }
 
 export const listingReducer = (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_LISTING_START:
+        case POST_LISTING_START:
             return {
                 ...state, 
                 isLoading: true,
                 error: ''
             }
-        case FETCH_LISTING_SUCCESS:
+        case POST_LISTING_SUCCESS:
             return {
                 ...state, 
                 isLoading: false,
-                listing: action.payload
         }
-        case FETCH_LISTING_FAILURE:
+        case POST_LISTING_FAILURE:
             return {
                 ...state, 
                 isLoading: false,

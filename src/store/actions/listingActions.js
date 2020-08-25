@@ -1,18 +1,18 @@
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
 
-export const FETCH_LISTING_START = 'FETCH_LISTING_START'
-export const FETCH_LISTING_SUCCESS = 'FETCH_LISTING_SUCCESS'
-export const FETCH_LISTING_FAILURE = 'FETCH_LISTING_FAILURE'
+export const POST_LISTING_START = 'POST_LISTING_START'
+export const POST_LISTING_SUCCESS = 'POST_LISTING_SUCCESS'
+export const POST_LISTING_FAILURE = 'POST_LISTING_FAILURE'
 
-export const fetchListing = (id) => (dispatch) => {
-    dispatch({ type: FETCH_LISTING_START })
-    axiosWithAuth().get(`api/listing/${id}`)
+export const addListing = (newListing) => (dispatch) => {
+    dispatch({ type: POST_LISTING_START })
+    axiosWithAuth().get(`api/listing/`, newListing)
     .then(res => {
         console.log(res)
-        //dispatch({ type: FETCH_LISTING_SUCCESS, payload: res.data })
+        //dispatch({ type: POST_LISTING_SUCCESS, payload: res.data })
     })
     .catch(err => {
         console.log(err)
-         //dispatch({ type: FETCH_LISTING_FAILURE, payload: err})
+         //dispatch({ type: POST_LISTING_FAILURE, payload: err})
     })
 }

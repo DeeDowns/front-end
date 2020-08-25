@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties } from '../store/actions/propertiesActions'
 
+import { Button } from 'reactstrap'
 
 
 
@@ -23,8 +24,8 @@ const Property = (props) => {
 
   return (
     <div>
-      <button onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</button>
-      <button onClick={handleDelete}>Remove Listing</button>
+      <Button color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
+      <Button color='success' onClick={handleDelete}>Remove Listing</Button>
     </div>
   )
 }

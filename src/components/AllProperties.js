@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchProperties } from '../store/actions/propertiesActions'
+import { addListing } from '../store/actions/listingActions'
 import PropertyCard from './PropertyCard'
 import AddProperty from './AddProperty'
+
+import { Button } from 'reactstrap'
 
 
 const AllProperties = (props) => {
@@ -26,24 +28,13 @@ const AllProperties = (props) => {
       </Link>
 
       <h2>Add Listing</h2>
-      {toggle && <AddProperty />}
-      <button onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</button>
+      {toggle && <AddProperty addListing={addListing} />}
+      <Button color='success' onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</Button>
 
 
     </div>
   )
 }
 
-// const mapStateToProps = state => {
 
-//   return {
-//     properties: state.propertiesReducer.properties,
-//     isLoading: state.propertiesReducer.isLoading,
-//     error: state.propertiesReducer.error
-//   }
-// }
-
-
-export default AllProperties
-
-// export default connect(mapStateToProps, { fetchProperties })(AllProperties)
+export default connect(null, { addListing })(AllProperties)
