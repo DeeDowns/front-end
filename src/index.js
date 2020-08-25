@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom';
@@ -20,7 +19,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 render(
   <Provider store={store}>
     <Router>
-        <App />
+      <App />
     </Router>
   </Provider>
   , document.getElementById('root')
