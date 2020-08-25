@@ -32,12 +32,12 @@ const Register = (props) => {
   }
   const register = event => {
     event.preventDefault()
-    axiosWithAuth().post('/api/auth/login', userRegister)
+    axiosWithAuth().post('/api/auth/register', userRegister)
     .then(res => {
-      console.log(res)
+      console.log(res.data)
 
-      //localStorage.setItem('token', res.data.payload)
-      // history.push('/login')
+      localStorage.setItem('token', res.data.password)
+      history.push('/login')
     })
     .catch(err => {
       console.log(err)
