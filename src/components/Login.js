@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useHistory } from 'react'
-import axios from 'axios'
-import LoginForm from './LoginForm'
-import axiosWithAuth from '../utils/axiosWithAuth'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 
 
