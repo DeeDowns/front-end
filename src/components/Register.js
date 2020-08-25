@@ -11,9 +11,9 @@ const intitialRegisterForm = {
 };
 
 const intitialRegisterFormErrors = {
-  street_address: '',
-  city: '',
-  zip: '',
+  name: '',
+  email: '',
+  password: '',
  
 };
 
