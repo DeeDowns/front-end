@@ -162,7 +162,7 @@ const EditProperty = (props) => {
         />
 
       <button>Save Changes</button>
-      
+
     </form>
   )
 }
