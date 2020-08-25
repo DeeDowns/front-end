@@ -13,6 +13,8 @@ import Register from './Register'
 import PrivateRoute from './PrivateRoute'
 import AddProperty from './AddProperty';
 
+import { NavbarBrand, Nav } from 'reactstrap'
+
 
 
 function App(props) {
@@ -37,17 +39,16 @@ function App(props) {
   // }, [])
 
 
+
   return (
     <div className="propertiesContainer">
-      <nav>
-        <h1>Airbnb Clone</h1>
-        <div>
-          <Link to='/'>Home</Link>
-          <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
-          <Link to='/properties'>Properties</Link>
-        </div>
-      </nav>
+      <Nav>
+        <NavbarBrand><h1>Airbnb Clone</h1></NavbarBrand>
+        <Link to='/'>Home</Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/register'>Register</Link>
+        <Link to='/properties'>Properties</Link>
+      </Nav>
 
       <Route exact path='/register'>
         <Register />

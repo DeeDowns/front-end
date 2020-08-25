@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { Button, Form, Label, FormGroup, Input } from 'reactstrap'
 
 
 const intitialRegisterForm = {
@@ -14,14 +15,14 @@ const intitialRegisterFormErrors = {
   name: '',
   email: '',
   password: '',
- 
+
 };
 
 
 const Register = (props) => {
   const [userRegister, setUserRegister] = useState(intitialRegisterForm)
   const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
-  
+
   let history = useHistory()
 
   const handleChange = event => {
@@ -33,15 +34,15 @@ const Register = (props) => {
   const register = event => {
     event.preventDefault()
     axiosWithAuth().post('/api/auth/register', userRegister)
-    .then(res => {
-      console.log(res.data)
+      .then(res => {
+        console.log(res.data)
 
-      localStorage.setItem('token', res.data.password)
-      history.push('/login')
-    })
-    .catch(err => {
-      console.log(err)
-    })
+        localStorage.setItem('token', res.data.password)
+        history.push('/login')
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
   return (
     <form onSubmit={register}>
@@ -50,40 +51,47 @@ const Register = (props) => {
       </div>
 
       <div>
-        <label>Name:&nbsp;
-        <input
-            type='text'
-            name='name'
-            value={userRegister.name}
-            placeholder='name'
-            onChange={handleChange}
-          />
-        </label>
+        <FormGroup>
+          <Label>Name:&nbsp;
+            <Input
+              type='text'
+              name='name'
+              value={userRegister.name}
+              placeholder='name'
+              onChange={handleChange}
+            />
+          </Label>
+        </FormGroup>
 
-        <label>Email:&nbsp;
-        <input
-            type='email'
-            name='email'
-            value={userRegister.email}
-            placeholder='email'
-            onChange={handleChange}
-          />
-        </label>
+        <FormGroup>
+          <Label>Email:&nbsp;
+            <Input
+              type='email'
+              name='email'
+              value={userRegister.email}
+              placeholder='email'
+              onChange={handleChange}
+            />
+          </Label>
+        </FormGroup>
 
-        <label>Password:&nbsp;
-        <input
-            type='password'
-            name='password'
-            value={userRegister.password}
-            placeholder='password'
-            onChange={handleChange}
-          />
-        </label>
+        <FormGroup>
+          <Label>Password:&nbsp;
+            <Input
+              type='password'
+              name='password'
+              value={userRegister.password}
+              placeholder='password'
+              onChange={handleChange}
+            />
+          </Label>
+        </FormGroup>
+
       </div>
-      <button>Sign Up</button>
+      <Button color='success'>Sign Up</Button>
     </form>
 
-    
+
   )
 }
 

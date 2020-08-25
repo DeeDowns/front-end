@@ -4,6 +4,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema'
 
+import { Button, Form, Label, FormGroup, Input } from 'reactstrap'
 
 
 const intitialLoginForm = {
@@ -36,11 +37,11 @@ export default function Login(props) {
       .then(res => {
         console.log(res)
 
-        //send token to local storage
-        // localStorage.setItem('token', res.data.payload)
+        // send token to local storage
+        localStorage.setItem('token', res.data.payload)
 
-        //redirect to register page
-        // history.push('/properties')
+        // redirect to register page
+        history.push('/properties')
       })
       .catch(err => {
         console.log(err)
@@ -79,7 +80,7 @@ export default function Login(props) {
   }
 
   return (
-    <form onSubmit={login}>
+    <Form onSubmit={login}>
       <div>
         <h2>Login</h2>
       </div>
@@ -90,28 +91,32 @@ export default function Login(props) {
       </div>
 
       <div>
-        <label>Email:&nbsp;
-          <input
-            type='email'
-            name='email'
-            value={userLogin.email}
-            placeholder='email'
-            onChange={onInputChange}
-          />
-        </label>
+        <FormGroup>
+          <Label>Email:&nbsp;
+          <Input
+              type='email'
+              name='email'
+              value={userLogin.email}
+              placeholder='email'
+              onChange={onInputChange}
+            />
+          </Label>
+        </FormGroup>
 
-        <label>Password:&nbsp;
-          <input
-            type='password'
-            name='password'
-            value={userLogin.password}
-            placeholder='password'
-            onChange={onInputChange}
-          />
-        </label>
+        <FormGroup>
+          <Label>Password:&nbsp;
+          <Input
+              type='password'
+              name='password'
+              value={userLogin.password}
+              placeholder='password'
+              onChange={onInputChange}
+            />
+          </Label>
+        </FormGroup>
 
       </div>
-      <button>Login</button>
-    </form>
+      <Button color='success'>Login</Button>
+    </Form>
   )
 }
