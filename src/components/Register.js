@@ -45,6 +45,44 @@ const Register = (props) => {
   }
   return (
     <>
+      <form>
+        <div>
+          <h2>Register</h2>
+        </div>
+
+        <div>
+          <label>Name:&nbsp;
+          <input
+              type='text'
+              name='name'
+              // value={}
+              placeholder='name'
+            // onChange={}
+            />
+          </label>
+
+          <label>Email:&nbsp;
+          <input
+              type='email'
+              name='email'
+              // value={}
+              placeholder='email'
+            // onChange={}
+            />
+          </label>
+
+          <label>Password:&nbsp;
+          <input
+              type='password'
+              name='password'
+              // value={}
+              placeholder='password'
+            // onChange={}
+            />
+          </label>
+        </div>
+      </form>
+      <button onClick={register}>test</button>
       <button>test</button>
     </>
   )
