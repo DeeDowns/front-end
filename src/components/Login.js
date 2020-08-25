@@ -36,7 +36,7 @@ export default function Login(props) {
       //send token to local storage
       // localStorage.setItem('token', res.data.payload)
 
-      //redirect to register page
+      //redirect to properties page
       // history.push('/properties')
     }) 
     .catch(err => {

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { useParams, useHistory } from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import { fetchProperties } from '../store/actions/propertiesActions'
 
-const initialFormValues = {
+
+const initialEditInputs = {
   streetAddress: '',
   city: '',
   state: '',
@@ -17,16 +21,45 @@ const initialFormValues = {
 }
 
 const EditProperty = (props) => {
+  const [editInputs, setEditInputs] = useState(initialEditInputs)
+  const { id } = useParams()
+  console.log(props)
+  
+
+  const handleChange = event => {
+    setEditInputs({
+      ...editInputs, 
+      [event.target.name]: event.target.value
+    })
+  }
+
+  //get listing by id 
+  //setEditInputs to the response data
+  //
+  
+
+
+  const saveEdits = event => {
+    event.preventDefault()
+    axiosWithAuth().put(`api/edit/${id}`, editInputs)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   return (
-    <form>
+    <form onSubmit={saveEdits}>
       <h1>Edit Property/Listing</h1>
       <label>Street Address</label>
         <input
           type='text'
           name='streetAddress'
           id='streetAddress'
-          // value={}
-          // onChange={}
+          value={editInputs.streetAddress}
+          onChange={handleChange}
         />
 
       <label>City</label>
@@ -34,8 +67,8 @@ const EditProperty = (props) => {
           type='text'
           name='city'
           id='city'
-          // value={}
-          // onChange={}
+          value={editInputs.city}
+          onChange={handleChange}
         />
 
       <label>State</label>
@@ -43,8 +76,8 @@ const EditProperty = (props) => {
           type='dropdown'
           name='state'
           id='state'
-          // value={}
-          // onChange={}
+          value={editInputs.state}
+          onChange={handleChange}
         />
 
       <label>Zip Code</label>
@@ -52,8 +85,8 @@ const EditProperty = (props) => {
           type='text'
           name='zip'
           id='zip'
-          // value={}
-          // onChange={}
+          value={editInputs.zip}
+          onChange={handleChange}
         />
 
       <label>Property Type</label>
@@ -61,8 +94,8 @@ const EditProperty = (props) => {
           type='dropdown'
           name='propertyType'
           id='propertyType'
-          // value={}
-          // onChange={}
+          value={editInputs.propertyType}
+          onChange={handleChange}
         />
 
       <label>Number of Bedrooms</label>
@@ -70,8 +103,8 @@ const EditProperty = (props) => {
           type='number'
           name='bedrooms'
           id='bedrooms'
-          // value={}
-          // onChange={}
+          value={editInputs.bedrooms}
+          onChange={handleChange}
         />
 
       <label>Number of Bathrooms</label>
@@ -79,8 +112,8 @@ const EditProperty = (props) => {
           type='number'
           name='bathrooms'
           id='bathrooms'
-          // value={}
-          // onChange={}
+          value={editInputs.bathrooms}
+          onChange={handleChange}
         />
 
     <label>Number of Beds</label>
@@ -88,8 +121,8 @@ const EditProperty = (props) => {
           type='number'
           name='beds'
           id='beds'
-          // value={}
-          // onChange={}
+          value={editInputs.beds}
+          onChange={handleChange}
         />
 
     <label>Number of Guests Included</label>
@@ -97,8 +130,8 @@ const EditProperty = (props) => {
           type='number'
           name='guestsIncluded'
           id='guestsIncluded'
-          // value={}
-          // onChange={}
+          value={editInputs.guestsIncluded}
+          onChange={handleChange}
         />
 
       <label>Accommodates</label>
@@ -106,8 +139,8 @@ const EditProperty = (props) => {
           type='number'
           name='accommodates'
           id='accommodates'
-          // value={}
-          // onChange={}
+          value={editInputs.accommodates}
+          onChange={handleChange}
         />
 
       <label>Min Nights</label>
@@ -115,8 +148,8 @@ const EditProperty = (props) => {
           type='number'
           name='minNights'
           id='minNights'
-          // value={}
-          // onChange={}
+          value={editInputs.minNights}
+          onChange={handleChange}
         />
 
       <label>Max Nights</label>
@@ -124,8 +157,8 @@ const EditProperty = (props) => {
           type='number'
           name='maxNights'
           id='maxNights'
-          // value={}
-          // onChange={}
+          value={editInputs.maxNights}
+          onChange={handleChange}
         />
 
       <button>Save Changes</button>
@@ -134,4 +167,13 @@ const EditProperty = (props) => {
   )
 }
 
-export default EditProperty
+const mapStateToProps = state => {
+
+  return {
+    properties: state.propertiesReducer.properties,
+    isLoading: state.propertiesReducer.isLoading,
+    error: state.propertiesReducer.error
+  }
+}
+
+export default connect(mapStateToProps, { fetchProperties })(EditProperty)

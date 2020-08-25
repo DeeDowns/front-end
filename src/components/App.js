@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchProperty } from '../store/actions/propertiesActions'
+import { fetchProperties } from '../store/actions/propertiesActions'
+import { fetchListing } from '../store/actions/listingActions'
 import Home from './Home'
 import AllProperties from './AllProperties'
 import EditProperty from './EditProperty'
@@ -15,25 +16,25 @@ import AddProperty from './AddProperty';
 
 
 function App(props) {
-  const [properties, setProperties] = useState([]);
-
-  const getProperties = () => {
-    axios.get('')
-      .then(res => {
-        console.log(res)
-        // setProperties()
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
   console.log(props)
 
+  //Move to AllProperties Component
+  // const [properties, setProperties] = useState([]);
 
-  useEffect(() => {
-    getProperties()
-  }, [])
+  // const getProperties = () => {
+  //   axios.get('')
+  //     .then(res => {
+  //       console.log(res)
+  //       // setProperties()
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
+
+  // useEffect(() => {
+  //   getProperties()
+  // }, [])
 
 
   return (
@@ -43,9 +44,8 @@ function App(props) {
         <div>
           <Link to='/'>Home</Link>
           <Link to='/login'>Login</Link>
-          <Link to='/properties'>Properties</Link>
           <Link to='/register'>Register</Link>
-         
+          <Link to='/properties'>Properties</Link>
         </div>
       </nav>
 
@@ -60,10 +60,6 @@ function App(props) {
       <PrivateRoute exact path='/edit-property/:id'>
         <EditProperty />
       </PrivateRoute>
-
-      {/* <PrivateRoute exact path='/add-property/:id'>
-        <AddProperty />
-      </PrivateRoute> */}
 
       <PrivateRoute exact path='/properties/:id'>
         <Property />
@@ -89,4 +85,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchProperty })(App);
+export default connect(mapStateToProps, { fetchProperties, fetchListing })(App);

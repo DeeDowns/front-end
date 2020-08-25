@@ -1,8 +1,10 @@
 //reducer index
 
 import { combineReducers } from 'redux'
-import {propertiesReducer} from './propertiesReducers'
+import {propertiesReducer} from './propertiesReducer'
+import { listingReducer } from './listingReducer'
 
 export const rootReducer = combineReducers({
-    propertiesReducer
+    propertiesReducer, 
+    listingReducer
 })
