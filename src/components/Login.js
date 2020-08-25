@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
-import axios from 'axios'
+
 
 const intitialLoginForm = {
   email: '',
@@ -13,7 +13,6 @@ const intitialLoginFormErrors = {
   email: '',
   password: '',
 };
-
 
 export default function Login(props) {
 
@@ -30,24 +29,24 @@ export default function Login(props) {
   const login = event => {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
-    axiosWithAuth().post('/api/auth/login')
-      .then(res => {
-        console.log(res)
+    axiosWithAuth().post('/api/auth/login', userLogin)
+    .then(res => {
+      console.log(res)
 
-        //send token to local storage
-        // localStorage.setItem('token', res.data.payload)
+      //send token to local storage
+      // localStorage.setItem('token', res.data.payload)
 
-        //redirect to register page
-        //history.push(route to register '/register')
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      //redirect to register page
+      // history.push('/properties')
+    }) 
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   return (
-    <form>
-      <div>
+    <form onSubmit={login}>
+       <div>
         <h2>Login</h2>
       </div>
 
@@ -73,6 +72,7 @@ export default function Login(props) {
         </label>
 
       </div>
+        <button>test</button>
     </form>
   )
 }
