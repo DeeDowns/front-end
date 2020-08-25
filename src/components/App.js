@@ -45,7 +45,7 @@ function App(props) {
           <Link to='/login'>Login</Link>
           <Link to='/properties'>Properties</Link>
           <Link to='/register'>Register</Link>
-         
+
         </div>
       </nav>
 

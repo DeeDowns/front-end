@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import {axiosWithAuth} from '../utils/axiosWithAuth'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+import * as yup from 'yup'
+import formSchema from '../validation/formSchema'
 
 
 
@@ -30,24 +32,62 @@ export default function Login(props) {
     event.preventDefault()
     //axiosWithAuth post request to get token from server
     axiosWithAuth().post('/api/auth/login', userLogin)
-    .then(res => {
-      console.log(res)
+      .then(res => {
+        console.log(res)
 
-      //send token to local storage
-      // localStorage.setItem('token', res.data.payload)
+        //send token to local storage
+        // localStorage.setItem('token', res.data.payload)
 
-      //redirect to register page
-      // history.push('/properties')
-    }) 
-    .catch(err => {
-      console.log(err)
-    })
+        //redirect to register page
+        // history.push('/properties')
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
+
+  const inputChange = (name, value) => {
+    yup
+      .reach(formSchema, name)
+      //we can then run validate using the value
+      .validate(value)
+      // if the validation is successful, we can clear the error message
+      .then(valid => {
+        setFormErrors({
+          ...formErrors,
+          [name]: "",
+        })
+      })
+
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        })
+      })
+
+    setUserLogin({
+      ...userLogin,
+      [name]: value
+    })
+  };
+
+  const onInputChange = evt => {
+    const { name, value } = evt.target
+    inputChange(name, value)
+  }
+
+
 
   return (
     <form onSubmit={login}>
-       <div>
+      <div>
         <h2>Login</h2>
+      </div>
+
+      <div>
+        <div>{formErrors.email}</div>
+        <div>{formErrors.password}</div>
       </div>
 
       <div>
@@ -57,7 +97,7 @@ export default function Login(props) {
             name='email'
             // value={}
             placeholder='email'
-          // onChange={}
+            onChange={onInputChange}
           />
         </label>
 
@@ -67,12 +107,12 @@ export default function Login(props) {
             name='password'
             // value={}
             placeholder='password'
-          // onChange={}
+            onChange={onInputChange}
           />
         </label>
 
       </div>
-        <button>Login</button>
+      <button>Login</button>
     </form>
   )
 }
