@@ -47,8 +47,7 @@ const Register = (props) => {
     <>
       <button>test</button>
     </>
-  ) 
-  }
+  )
+}
 
-  export default Register
-   
+export default Register

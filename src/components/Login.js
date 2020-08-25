@@ -6,13 +6,11 @@ import axiosWithAuth from '../utils/axiosWithAuth'
 
 
 const intitialLoginForm = {
-  name: '',
   email: '',
   password: '',
 };
 
 const intitialLoginFormErrors = {
-  name: '',
   email: '',
   password: '',
 };
@@ -54,16 +52,6 @@ export default function Login(props) {
       </div>
 
       <div>
-        <label>Name:&nbsp;
-          <input
-            type='text'
-            name='name'
-            // value={}
-            placeholder='name'
-          // onChange={}
-          />
-        </label>
-
         <label>Email:&nbsp;
           <input
             type='email'
@@ -83,10 +71,9 @@ export default function Login(props) {
           // onChange={}
           />
         </label>
+
       </div>
         <button>test</button>
     </form>
-    )
-  
+  )
 }
-
