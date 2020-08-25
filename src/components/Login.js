@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
@@ -77,8 +77,6 @@ export default function Login(props) {
     const { name, value } = evt.target
     inputChange(name, value)
   }
-
-
 
   return (
     <form onSubmit={login}>
