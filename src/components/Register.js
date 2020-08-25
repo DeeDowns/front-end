@@ -4,25 +4,17 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 const intitialRegisterForm = {
-  street_address: '',
-  city: '',
-  zip: '',
-  property_type: '',
-  leasable_area: '',
-  parking: '',
-  upgrades: '',
-  special_remarks: ''
+  name: '',
+  email: '',
+  password: '',
+
 };
 
 const intitialRegisterFormErrors = {
-  street_address: '',
-  city: '',
-  zip: '',
-  property_type: '',
-  leasable_area: '',
-  parking: '',
-  // upgrades: '',
-  // special_remarks: ''
+  name: '',
+  email: '',
+  password: '',
+ 
 };
 
 
@@ -45,6 +37,43 @@ const Register = (props) => {
   }
   return (
     <>
+      <form>
+        <div>
+          <h2>Register</h2>
+        </div>
+
+        <div>
+          <label>Name:&nbsp;
+          <input
+              type='text'
+              name='name'
+              // value={}
+              placeholder='name'
+            // onChange={}
+            />
+          </label>
+
+          <label>Email:&nbsp;
+          <input
+              type='email'
+              name='email'
+              // value={}
+              placeholder='email'
+            // onChange={}
+            />
+          </label>
+
+          <label>Password:&nbsp;
+          <input
+              type='password'
+              name='password'
+              // value={}
+              placeholder='password'
+            // onChange={}
+            />
+          </label>
+        </div>
+      </form>
       <button>test</button>
     </>
   )
