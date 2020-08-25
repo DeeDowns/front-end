@@ -24,58 +24,66 @@ const Register = (props) => {
   
   let history = useHistory()
 
+  const handleChange = event => {
+    setUserRegister({
+      ...userRegister,
+      [event.target.name]: event.target.value
+    })
+  }
   const register = event => {
     event.preventDefault()
-    axiosWithAuth().post('/api/auth/register', userRegister)
+    axiosWithAuth().post('/api/auth/login', userRegister)
     .then(res => {
       console.log(res)
-      history.push('/login')
+
+      //localStorage.setItem('token', res.data.payload)
+      // history.push('/login')
     })
     .catch(err => {
       console.log(err)
     })
   }
   return (
-    <>
-      <form>
-        <div>
-          <h2>Register</h2>
-        </div>
+    <form onSubmit={register}>
+      <div>
+        <h2>Register</h2>
+      </div>
 
-        <div>
-          <label>Name:&nbsp;
-          <input
-              type='text'
-              name='name'
-              // value={}
-              placeholder='name'
-            // onChange={}
-            />
-          </label>
+      <div>
+        <label>Name:&nbsp;
+        <input
+            type='text'
+            name='name'
+            value={userRegister.name}
+            placeholder='name'
+            onChange={handleChange}
+          />
+        </label>
 
-          <label>Email:&nbsp;
-          <input
-              type='email'
-              name='email'
-              // value={}
-              placeholder='email'
-            // onChange={}
-            />
-          </label>
+        <label>Email:&nbsp;
+        <input
+            type='email'
+            name='email'
+            value={userRegister.email}
+            placeholder='email'
+            onChange={handleChange}
+          />
+        </label>
 
-          <label>Password:&nbsp;
-          <input
-              type='password'
-              name='password'
-              // value={}
-              placeholder='password'
-            // onChange={}
-            />
-          </label>
-        </div>
-      </form>
-      <button>test</button>
-    </>
+        <label>Password:&nbsp;
+        <input
+            type='password'
+            name='password'
+            value={userRegister.password}
+            placeholder='password'
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+      <button>Sign Up</button>
+    </form>
+
+    
   )
 }
 

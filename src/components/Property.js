@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchProperty } from '../store/actions/propertiesActions'
+import { fetchProperties } from '../store/actions/propertiesActions'
 
 
 
@@ -12,9 +12,8 @@ const Property = (props) => {
   const { id } = useParams()
   let history = useHistory()
   
-   useEffect(() => {
-      fetchProperty(id)
-   }, [id])
+  //get property by id
+  //
 
    const handleDelete = event => {
      event.preventDefault()
@@ -38,4 +37,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchProperty })(Property)
+export default connect(mapStateToProps, { fetchProperties })(Property)
