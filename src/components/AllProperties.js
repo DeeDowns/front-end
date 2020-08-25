@@ -19,10 +19,10 @@ export default function AllProperties(props) {
       </Link>
 
       <h2>Add Listing</h2>
-      {toggle &&  <AddProperty />}
+      {toggle && <AddProperty />}
       <button onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</button>
-     
-     
-   </div>
+
+
+    </div>
   )
 }
