@@ -16,6 +16,7 @@ const intitialLoginFormErrors = {
   password: '',
 };
 
+
 export default function Login(props) {
 
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
@@ -95,7 +96,7 @@ export default function Login(props) {
           <input
             type='email'
             name='email'
-            // value={}
+            value={userLogin.email}
             placeholder='email'
             onChange={onInputChange}
           />
@@ -105,7 +106,7 @@ export default function Login(props) {
           <input
             type='password'
             name='password'
-            // value={}
+            value={userLogin.password}
             placeholder='password'
             onChange={onInputChange}
           />
