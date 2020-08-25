@@ -6,6 +6,7 @@ import PropertyCard from './PropertyCard'
 import AddProperty from './AddProperty'
 
 import { Button } from 'reactstrap'
+import '../styles/AllProperties.css'
 
 
 const AllProperties = (props) => {
@@ -20,16 +21,18 @@ const AllProperties = (props) => {
     setToggle(!toggle)
   }
   return (
-    <div>
+    <div className='all-properties-container'>
       <h1>All Properties</h1>
       {/* Ed map over properties to render a property card for each */}
+      <div className='listing-container'>
       <Link to={'/properties/:id'}>
         <PropertyCard />
       </Link>
+      </div>
 
       <h2>Add Listing</h2>
       {toggle && <AddProperty addListing={addListing} />}
-      <Button color='success' onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</Button>
+      <Button className='toggle-add' color='success' onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</Button>
 
 
     </div>

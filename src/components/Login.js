@@ -21,6 +21,7 @@ export default function Login(props) {
 
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
+  
 
 
   //so we can redirect to register page
@@ -37,10 +38,11 @@ export default function Login(props) {
         console.log(res)
 
         //send token to local storage
-        // localStorage.setItem('token', res.data.payload)
+        localStorage.setItem('token', res.data.token)
+        
 
         //redirect to register page
-        // history.push('/properties')
+        history.push('/properties')
       })
       .catch(err => {
         console.log(err)

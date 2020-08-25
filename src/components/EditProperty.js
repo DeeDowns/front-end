@@ -5,7 +5,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { fetchProperties } from '../store/actions/propertiesActions'
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
-
+import '../styles/EditProperty.css'
 
 
 const initialEditInputs = {
@@ -54,7 +54,7 @@ const EditProperty = (props) => {
   }
 
   return (
-    <Form onSubmit={saveEdits}>
+    <Form className='edit-form' onSubmit={saveEdits}>
       
       <h1>Edit Property/Listing</h1>
       <FormGroup>
@@ -236,7 +236,7 @@ const EditProperty = (props) => {
           onChange={handleChange}
         />
         </FormGroup>
-      <Button color='success'>Save Changes</Button>
+      <Button className='save-btn' color='success'>Save Changes</Button>
 
     </Form>
   )

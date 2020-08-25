@@ -13,6 +13,8 @@ import Register from './Register'
 import PrivateRoute from './PrivateRoute'
 import AddProperty from './AddProperty';
 
+import '../styles/App.css'
+
 
 
 function App(props) {
