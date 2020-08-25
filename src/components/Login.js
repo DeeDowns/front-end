@@ -72,7 +72,7 @@ export default function Login(props) {
         </label>
 
       </div>
-        <button>test</button>
+        <button>Login</button>
     </form>
   )
 }

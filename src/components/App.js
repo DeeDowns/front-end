@@ -20,7 +20,8 @@ function App(props) {
   const getProperties = () => {
     axios.get('')
       .then(res => {
-        setProperties()
+        console.log(res)
+        // setProperties()
       })
       .catch(err => {
         console.log(err)
@@ -30,9 +31,9 @@ function App(props) {
   console.log(props)
 
 
-  // useEffect(() => {
-  //   getProperties
-  // }, [])
+  useEffect(() => {
+    getProperties()
+  }, [])
 
 
   return (
@@ -44,9 +45,7 @@ function App(props) {
           <Link to='/login'>Login</Link>
           <Link to='/properties'>Properties</Link>
           <Link to='/register'>Register</Link>
-          {/* these links below are temporary, just need them to render so I can work with them */}
-          <Link to='/edit-property/:id'>edit</Link>
-          <Link to='/add-property/:id'>add</Link>
+         
         </div>
       </nav>
 
@@ -62,9 +61,9 @@ function App(props) {
         <EditProperty />
       </PrivateRoute>
 
-      <PrivateRoute exact path='/add-property/:id'>
+      {/* <PrivateRoute exact path='/add-property/:id'>
         <AddProperty />
-      </PrivateRoute>
+      </PrivateRoute> */}
 
       <PrivateRoute exact path='/properties/:id'>
         <Property />
