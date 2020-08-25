@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchProperties } from '../store/actions/propertiesActions'
 
 import { Button } from 'reactstrap'
+import '../styles/Property.css'
 
 
 
@@ -23,9 +24,9 @@ const Property = (props) => {
    }
 
   return (
-    <div>
-      <Button color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
-      <Button color='success' onClick={handleDelete}>Remove Listing</Button>
+    <div className='button-container'>
+      <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
+      <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>
     </div>
   )
 }

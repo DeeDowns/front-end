@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { addListing } from '../store/actions/listingActions'
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
-
+import '../styles/AddProperty.css'
 
 const initialAddInputs = {
     streetAddress: '',
@@ -44,7 +44,7 @@ const AddProperty = (props) => {
   }
 
     return (
-      <Form>
+      <Form className='add-form'>
         <h1>Add Property/Listing</h1>
         <FormGroup>
       <Label>Street Address</Label>
@@ -225,7 +225,7 @@ const AddProperty = (props) => {
           onChange={handleChanges}
         />
         </FormGroup>
-      <Button color='success'>Add Listing</Button>
+      <Button className='add-btn' color='success'>Add Listing</Button>
         
       </Form>
     )
