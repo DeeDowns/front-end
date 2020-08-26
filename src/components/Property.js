@@ -24,9 +24,15 @@ const Property = (props) => {
    }
 
   return (
-    <div className='button-container'>
-      <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
-      <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>
+    <div className='main-container'>
+      <div className='img-container'>
+        <h1>Listing #</h1>
+      </div>
+      <div className='button-container'>
+        <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
+        <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>
+        <Button className='back-btn' color='success' onClick={() => history.push('/properties')}>Back</Button>
+      </div>
     </div>
   )
 }

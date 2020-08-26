@@ -7,27 +7,46 @@
 
 }
 
-nav {
-    width: 95%;
+header {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: #2f6627;
 }
-nav div {
-    align-self: flex-start;
+
+nav {
     width: 50%;
-    margin: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
 }
 
-nav div a {
-    font-size: 3.8rem;
-    margin: 3%
+
+nav a {
+    font-size: 2.5rem;
+    margin: 3%;
+    padding: 2%;
+    color: whitesmoke;
+    background-color: #44c767;
+    border-radius: 28px;
+    transition: all .1s ease-in-out;
+    
 }
 
-nav h1 {
-    font-size: 5rem;
+nav a:hover{
+    text-decoration: none;
+    color: whitesmoke;
+    transform: scale(1.1) ;
+}
+
+header h1 {
+    font-size: 4rem;
     text-align: center;
     width: 40%;
     margin: 1%;
+    color: whitesmoke
 }

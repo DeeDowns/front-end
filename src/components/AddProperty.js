@@ -45,7 +45,7 @@ const AddProperty = (props) => {
 
   return (
     <Form className='add-form'>
-      <h1>Add Property/Listing</h1>
+      <h2>Add Property/Listing</h2>
       <FormGroup>
         <Label>Street Address</Label>
         <Input
