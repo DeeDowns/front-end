@@ -3,8 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema'
+import { Button, Form, Label, FormGroup, Input } from 'reactstrap'
 
-
+import '../styles/Login.css'
 
 const intitialLoginForm = {
   email: '',
@@ -21,7 +22,7 @@ export default function Login(props) {
 
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
-  
+
 
 
   //so we can redirect to register page
@@ -39,7 +40,7 @@ export default function Login(props) {
 
         //send token to local storage
         localStorage.setItem('token', res.data.token)
-        
+
 
         //redirect to register page
         history.push('/properties')
@@ -81,7 +82,7 @@ export default function Login(props) {
   }
 
   return (
-    <form onSubmit={login}>
+    <Form onSubmit={login}>
       <div>
         <h2>Login</h2>
       </div>
@@ -91,29 +92,30 @@ export default function Login(props) {
         <div>{formErrors.password}</div>
       </div>
 
-      <div>
-        <label>Email:&nbsp;
-          <input
+      <FormGroup>
+        <Label>Email:&nbsp;
+          <Input
             type='email'
             name='email'
             value={userLogin.email}
             placeholder='email'
             onChange={onInputChange}
           />
-        </label>
+        </Label>
+      </FormGroup>
 
-        <label>Password:&nbsp;
-          <input
+      <FormGroup>
+        <Label>Password:&nbsp;
+          <Input
             type='password'
             name='password'
             value={userLogin.password}
             placeholder='password'
             onChange={onInputChange}
           />
-        </label>
-
-      </div>
-      <button>Login</button>
-    </form>
+        </Label>
+      </FormGroup>
+      <Button color='success'>Login</Button>
+    </Form>
   )
 }

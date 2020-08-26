@@ -39,16 +39,15 @@ function App(props) {
   // }, [])
 
 
+
   return (
     <div className="propertiesContainer">
       <nav>
         <h1>Airbnb Clone</h1>
-        <div>
-          <Link to='/'>Home</Link>
-          <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
-          <Link to='/properties'>Properties</Link>
-        </div>
+        <Link to='/'>Home</Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/register'>Register</Link>
+        <Link to='/properties'>Properties</Link>
       </nav>
 
       <Route exact path='/register'>

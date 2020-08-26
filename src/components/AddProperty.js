@@ -8,18 +8,18 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import '../styles/AddProperty.css'
 
 const initialAddInputs = {
-    streetAddress: '',
-    city: '',
-    state: '',
-    zip: '',
-    propertyType: '',
-    bedrooms: '',
-    beds: '',
-    bathrooms: '',
-    guestsIncluded: '',
-    accommodates: '',
-    minNights: '',
-    maxNights: ''
+  streetAddress: '',
+  city: '',
+  state: '',
+  zip: '',
+  propertyType: '',
+  bedrooms: '',
+  beds: '',
+  bathrooms: '',
+  guestsIncluded: '',
+  accommodates: '',
+  minNights: '',
+  maxNights: ''
 }
 
 const AddProperty = (props) => {
@@ -34,7 +34,7 @@ const AddProperty = (props) => {
     })
   }
 
-    
+
   const submit = event => {
     event.preventDefault()
     //props.addListing(addInputs)
@@ -43,11 +43,11 @@ const AddProperty = (props) => {
 
   }
 
-    return (
-      <Form className='add-form'>
-        <h1>Add Property/Listing</h1>
-        <FormGroup>
-      <Label>Street Address</Label>
+  return (
+    <Form className='add-form'>
+      <h1>Add Property/Listing</h1>
+      <FormGroup>
+        <Label>Street Address</Label>
         <Input
           type='text'
           name='streetAddress'
@@ -57,7 +57,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>City</Label>
+        <Label>City</Label>
         <Input
           type='text'
           name='city'
@@ -67,7 +67,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>State</Label>
+        <Label>State</Label>
         <Input
           type='select'
           name='state'
@@ -75,61 +75,61 @@ const AddProperty = (props) => {
           value={addInputs.state}
           onChange={handleChanges}
         >
-            <option value='AL'>Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
+          <option value='AL'>Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
         </Input>
       </FormGroup>
       <FormGroup>
-      <Label>Zip Code</Label>
+        <Label>Zip Code</Label>
         <Input
           type='text'
           name='zip'
@@ -139,7 +139,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>Property Type</Label>
+        <Label>Property Type</Label>
         <Input
           type='select'
           name='propertyType'
@@ -147,16 +147,16 @@ const AddProperty = (props) => {
           value={addInputs.propertyType}
           onChange={handleChanges}
         >
-            <option>House </option>
-            <option>Townhouse </option>
-            <option>Apartment </option>
-            <option>Condominium </option>
-            <option>Room </option>
-            <option>Other </option>
+          <option>House </option>
+          <option>Townhouse </option>
+          <option>Apartment </option>
+          <option>Condominium </option>
+          <option>Room </option>
+          <option>Other </option>
         </Input>
       </FormGroup>
       <FormGroup>
-      <Label>Number of Bedrooms</Label>
+        <Label>Number of Bedrooms</Label>
         <Input
           type='number'
           name='bedrooms'
@@ -166,7 +166,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>Number of Bathrooms</Label>
+        <Label>Number of Bathrooms</Label>
         <Input
           type='number'
           name='bathrooms'
@@ -176,7 +176,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-    <Label>Number of Beds</Label>
+        <Label>Number of Beds</Label>
         <Input
           type='number'
           name='beds'
@@ -186,7 +186,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-    <Label>Number of Guests Included</Label>
+        <Label>Number of Guests Included</Label>
         <Input
           type='number'
           name='guestsIncluded'
@@ -196,7 +196,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>Accommodates</Label>
+        <Label>Accommodates</Label>
         <Input
           type='number'
           name='accommodates'
@@ -206,7 +206,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>Min Nights</Label>
+        <Label>Min Nights</Label>
         <Input
           type='number'
           name='minNights'
@@ -216,7 +216,7 @@ const AddProperty = (props) => {
         />
       </FormGroup>
       <FormGroup>
-      <Label>Max Nights</Label>
+        <Label>Max Nights</Label>
         <Input
           type='number'
           name='maxNights'
@@ -224,11 +224,12 @@ const AddProperty = (props) => {
           value={addInputs.maxNights}
           onChange={handleChanges}
         />
-        </FormGroup>
+      </FormGroup>
       <Button className='add-btn' color='success'>Add Listing</Button>
-        
-      </Form>
-    )
-  }
 
-  export default AddProperty
+    </Form>
+  )
+}
+
+
+export default AddProperty
