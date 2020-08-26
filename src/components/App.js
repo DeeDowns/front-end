@@ -18,7 +18,7 @@ import '../styles/App.css'
 
 
 function App(props) {
-  console.log(props)
+  console.log('APP', props)
 
   //Move to AllProperties Component
   // const [properties, setProperties] = useState([]);
@@ -34,16 +34,18 @@ function App(props) {
   //     })
   // }
 
-  // useEffect(() => {
-  //   getProperties()
-  // }, [])
+  useEffect(() => {
+    props.fetchProperties()
+  }, [])
+
+
 
 
 
   return (
     <div className="propertiesContainer">
       <header>
-       <img src='https://raw.githubusercontent.com/AirBnBO-Taja/marketing/master/AirPrice.gif?token=ALIKJINLMTIPWGG7FP3B2HS7I2XNM' alt='logo'/>
+       <img src='https://raw.githubusercontent.com/AirBnBO-Taja/marketing/master/AirPrice.gif?token=ALIKJIIMVMRA23TRYAMKCWK7I3OTY' alt='logo'/>
         <nav>
           <Link to='/'>Home</Link>
           <Link to='/login'>Login</Link>
@@ -61,11 +63,11 @@ function App(props) {
       </Route>
 
       <PrivateRoute exact path='/edit-property/:id'>
-        <EditProperty />
+        <EditProperty fetchProperties={props.fetchProperties} properties={props.properties}/>
       </PrivateRoute>
 
       <PrivateRoute exact path='/properties/:id'>
-        <Property />
+        <Property properties={props.properties} property={props.property}/>
       </PrivateRoute>
 
       <PrivateRoute exact path='/properties'>
@@ -80,9 +82,9 @@ function App(props) {
 }
 
 const mapStateToProps = state => {
-
   return {
     properties: state.propertiesReducer.properties,
+    property: state.propertiesReducer.property,
     isLoading: state.propertiesReducer.isLoading,
     error: state.propertiesReducer.error
   }
