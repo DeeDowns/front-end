@@ -45,7 +45,7 @@ function App(props) {
   return (
     <div className="propertiesContainer">
       <header>
-       <img src='https://raw.githubusercontent.com/AirBnBO-Taja/marketing/master/AirPrice.gif?token=ALIKJIIMVMRA23TRYAMKCWK7I3OTY' alt='logo'/>
+       <img src={require('../assests/BW-AirPrice.gif')} alt='logo'/>
         <nav>
           <Link to='/'>Home</Link>
           <Link to='/login'>Login</Link>
