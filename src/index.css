@@ -1,18 +1,12 @@
-body {
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  /* border: 3px solid grey; */
 }
 
-.nav {
-  justify-content: space-between;
-  align-items: center;
-  margin: 3% 0 3% 0;
+html {
+  font-size: 62.5%
 }
 
-.propertiesContainer {
-  margin: 3%;
-}
