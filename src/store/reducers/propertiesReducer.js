@@ -1,7 +1,8 @@
-import { FETCH_PROPERTY_START, FETCH_PROPERTY_SUCCESS, FETCH_PROPERTY_FAILURE } from '../actions/propertiesActions'
+import { FETCH_PROPERTY_START, FETCH_PROPERTY_SUCCESS, FETCH_PROPERTY_FAILURE, FETCH_PROPERTY_ID_SUCCESS   } from '../actions/propertiesActions'
 
 const initialState = {
     properties: [],
+    property: {},
     isLoading: false,
     error: ''
 }
@@ -14,12 +15,19 @@ export const propertiesReducer = (state = initialState, action) => {
                 isLoading: true,
                 error: ''
             }
+            case FETCH_PROPERTY_ID_SUCCESS :
+                return {
+                    ...state, 
+                    isLoading: false,
+                    property: action.payload
+            }
             case FETCH_PROPERTY_SUCCESS:
                 return {
                     ...state,
                     isLoading: false,
                     properties: action.payload
                 }
+      
             case FETCH_PROPERTY_FAILURE:
                 return {
                     ...state,
