@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { Button, Form, Label, FormGroup, Input } from 'reactstrap'
+import { Button, Label, FormGroup, Input } from 'reactstrap'
 
 
 const intitialRegisterForm = {

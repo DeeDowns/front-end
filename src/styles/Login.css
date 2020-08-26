@@ -16,4 +16,6 @@ form label {
   margin: 0 auto;
 }
 
-
+.errorText {
+  font-size: 2rem;
+}
