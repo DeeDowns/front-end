@@ -158,7 +158,7 @@ const EditProperty = (props) => {
           value={editInputs.propertyType}
           onChange={handleChange}
         >
-            <option>House </option>
+            <option>Single Family Home </option>
             <option>Townhouse </option>
             <option>Apartment </option>
             <option>Condominium </option>
@@ -251,4 +251,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchProperties})(EditProperty)
+export default connect(mapStateToProps, { fetchProperties })(EditProperty)
