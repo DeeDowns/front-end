@@ -43,7 +43,7 @@ function App(props) {
   return (
     <div className="propertiesContainer">
       <header>
-        <h1>Airbnb Clone</h1>
+       <img src='https://raw.githubusercontent.com/AirBnBO-Taja/marketing/master/AirPrice.gif?token=ALIKJINLMTIPWGG7FP3B2HS7I2XNM' alt='logo'/>
         <nav>
           <Link to='/'>Home</Link>
           <Link to='/login'>Login</Link>
