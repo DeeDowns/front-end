@@ -3,6 +3,8 @@
     flex-direction: row;
     width: 30%;
     margin: 2%;
+    justify-content: center;
+    align-items: center;
 }
 
 .edit-btn {
@@ -16,3 +18,8 @@
     margin: 1%
 }
 
+.back-btn {
+    font-size: 2rem;
+    margin: 1%;
+    width: 25%
+}
