@@ -1,0 +1,19 @@
+h2 {
+  text-align: center;
+}
+
+
+form {
+  margin-top: 5%;
+  text-align: center;
+}
+
+form label {
+  text-align: left
+}
+
+.form-group{
+  margin: 0 auto;
+}
+
+

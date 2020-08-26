@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema'
-
 import { Button, Form, Label, FormGroup, Input } from 'reactstrap'
 
+import '../styles/Login.css'
 
 const intitialLoginForm = {
   email: '',
@@ -92,32 +92,29 @@ export default function Login(props) {
         <div>{formErrors.password}</div>
       </div>
 
-      <div>
-        <FormGroup>
-          <Label>Email:&nbsp;
+      <FormGroup>
+        <Label>Email:&nbsp;
           <Input
-              type='email'
-              name='email'
-              value={userLogin.email}
-              placeholder='email'
-              onChange={onInputChange}
-            />
-          </Label>
-        </FormGroup>
+            type='email'
+            name='email'
+            value={userLogin.email}
+            placeholder='email'
+            onChange={onInputChange}
+          />
+        </Label>
+      </FormGroup>
 
-        <FormGroup>
-          <Label>Password:&nbsp;
+      <FormGroup>
+        <Label>Password:&nbsp;
           <Input
-              type='password'
-              name='password'
-              value={userLogin.password}
-              placeholder='password'
-              onChange={onInputChange}
-            />
-          </Label>
-        </FormGroup>
-
-      </div>
+            type='password'
+            name='password'
+            value={userLogin.password}
+            placeholder='password'
+            onChange={onInputChange}
+          />
+        </Label>
+      </FormGroup>
       <Button color='success'>Login</Button>
     </Form>
   )
