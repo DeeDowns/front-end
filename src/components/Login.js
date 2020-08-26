@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema'
-import { Button, Form, Label, FormGroup, Input } from 'reactstrap'
+import { Button, Form, Label, FormGroup, Input, FormText } from 'reactstrap'
 
 import '../styles/Login.css'
 
@@ -88,8 +88,8 @@ export default function Login(props) {
       </div>
 
       <div>
-        <div>{formErrors.email}</div>
-        <div>{formErrors.password}</div>
+        <FormText className='errorText'>{formErrors.email}</FormText>
+        <FormText className='errorText'>{formErrors.password}</FormText>
       </div>
 
       <FormGroup>
