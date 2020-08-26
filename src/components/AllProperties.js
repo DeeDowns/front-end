@@ -21,20 +21,24 @@ const AllProperties = (props) => {
     setToggle(!toggle)
   }
   return (
-    <div className='all-properties-container'>
-      <h1>All Properties</h1>
-      {/* Ed map over properties to render a property card for each */}
-      <div className='listing-container'>
-      <Link to={'/properties/:id'}>
-        <PropertyCard />
-      </Link>
+    <div className='main-container'>
+      <div className='img-container'>
+          <h1>All Properties</h1>
       </div>
-
-      <h2>Add Listing</h2>
-      {toggle && <AddProperty addListing={addListing} />}
-      <Button className='toggle-add' color='success' onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</Button>
-
-
+      <div className='all-properties-container'>
+        
+        {/* Ed map over properties to render a property card for each */}
+        <div className='listing-container'>
+        <Link to={'/properties/:id'}>
+          <PropertyCard />
+        </Link>
+        </div>
+        <div className='add-listing-container'>
+          <h2>Add Listing</h2>
+          {toggle && <AddProperty addListing={addListing} />}
+          <Button className='toggle-add' color='success' onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</Button>
+        </div>
+      </div>
     </div>
   )
 }

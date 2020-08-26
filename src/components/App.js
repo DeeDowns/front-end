@@ -42,13 +42,15 @@ function App(props) {
 
   return (
     <div className="propertiesContainer">
-      <nav>
-        <h1>Airbnb Clone</h1>
-        <Link to='/'>Home</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/register'>Register</Link>
-        <Link to='/properties'>Properties</Link>
-      </nav>
+      <header>
+       <img src='https://raw.githubusercontent.com/AirBnBO-Taja/marketing/master/AirPrice.gif?token=ALIKJINLMTIPWGG7FP3B2HS7I2XNM' alt='logo'/>
+        <nav>
+          <Link to='/'>Home</Link>
+          <Link to='/login'>Login</Link>
+          <Link to='/register'>Register</Link>
+          <Link to='/properties'>Properties</Link>
+        </nav>
+      </header>
 
       <Route exact path='/register'>
         <Register />
