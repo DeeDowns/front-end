@@ -31,12 +31,13 @@ const OptimalPrice = props => {
       .then(res => {
         console.log('PRICE RESPONSE', res.data.components.schemas.BnB.properties)
         const properties = res.data.components.schemas.BnB.properties
+        //Gives the keys and values of the properties in the API
         var k = Object.keys(properties)
         var v = Object.values(properties)
-        //  var result = Object.keys(properties).map(function(keys){
-        //      return [keys, properties(keys)]
-        //  })
+        //K will give the names of the features, v will give both
          console.log('Results', k, v)
+        // v has the shape {"bathrooms": 2}
+         return v;
       })
       .catch(err => {
         console.log(err)    
