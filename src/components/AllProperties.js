@@ -46,16 +46,17 @@ const AllProperties = (props) => {
       <div className='all-properties-container'>
 
         {/* Ed map over properties to render a property card for each */}
-
-        {properties.map((property, indx) => (
-          <div className='listing-container'>
-            <Link to={`/properties/${property.id}`}>
-              <h2>Listing {indx + 1}</h2>
-              <p>{property.street_address}</p>
-              <PropertyCard />
-            </Link>
-          </div>
-        ))}
+        <div className='property-listing'>
+          {properties.map((property, indx) => (
+            <div className='list-container'>
+              <Link to={`/properties/${property.id}`}>
+                <h2>Listing {indx + 1}</h2>
+                <p>{property.street_address}</p>
+                <PropertyCard />
+              </Link>
+            </div>
+          ))}
+        </div>
 
         <div className='add-listing-container'>
           <h2>Add Listing</h2>
