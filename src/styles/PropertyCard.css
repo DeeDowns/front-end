@@ -1,7 +1,10 @@
 .property-card-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+
    
 
 }
@@ -11,4 +14,9 @@
     font-size: 1.8rem;
     text-align: center;
     margin: 1%;
+    text-align: center;
+}
+
+.property-card-container p {
+    font-size: 1.5rem;
 }

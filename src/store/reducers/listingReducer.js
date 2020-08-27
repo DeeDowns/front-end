@@ -18,6 +18,7 @@ export const listingReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 isLoading: false,
+                properties: action.payload
         }
         case POST_LISTING_FAILURE:
             return {

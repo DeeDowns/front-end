@@ -41,23 +41,18 @@ h2 {
     margin: 3% 0;
 }
 
-p {
-  font-size: 2rem;
-  margin: 10% 0;
+.listing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    margin: 2% 1%;
+    align-self: flex-start;
 }
 
-.property-listing {
-  width: 60%;
+.listing-container a {
+    width: 95%;
 }
-
-.list-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin: 3% 0;
-}
-
 
 .add-listing-container {
   width: 33%;
