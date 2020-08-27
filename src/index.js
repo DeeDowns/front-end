@@ -12,7 +12,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from '../src/components/App';
 
 import { BrowserRouter as Router } from 'react-router-dom'
-import './index.css';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))

@@ -40,14 +40,10 @@ function App(props) {
     props.fetchProperties()
   }, [])
 
-
-
-
-
   return (
     <div className="propertiesContainer">
       <header>
-       <img src={require('../assests/BW-AirPrice.gif')} alt='logo'/>
+        <img src={require('../assests/BW-AirPrice.gif')} alt='logo' />
         <nav>
           <Link to='/'>Home</Link>
           <Link to='/login'>Login</Link>
@@ -65,11 +61,11 @@ function App(props) {
       </Route>
 
       <PrivateRoute exact path='/edit-property/:id'>
-        <EditProperty fetchProperties={props.fetchProperties} properties={props.properties}/>
+        <EditProperty fetchProperties={props.fetchProperties} properties={props.properties} />
       </PrivateRoute>
 
       <PrivateRoute exact path='/properties/:id'>
-        <Property properties={props.properties} property={props.property}/>
+        <Property properties={props.properties} property={props.property} />
       </PrivateRoute>
 
       <PrivateRoute exact path='/properties'>
