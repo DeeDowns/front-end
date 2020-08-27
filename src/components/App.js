@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties, fetchPropertyById, addListing} from '../store/actions/propertiesActions'
+import { getOptimalPrice } from '../store/actions/optimalPriceActions'
 // import { addListing } from '../store/actions/listingActions'
 import Home from './Home'
 import AllProperties from './AllProperties'
@@ -11,6 +12,7 @@ import Property from './Property'
 import Login from './Login'
 import Register from './Register'
 import PrivateRoute from './PrivateRoute'
+import OptimalPrice from './OptimalPrice'
 import AddProperty from './AddProperty';
 
 import '../styles/App.css'
@@ -77,6 +79,10 @@ function App(props) {
       <Route exact path='/'>
         <Home />
       </Route>
+
+      <Route exact path='/optimal-price'>
+        <OptimalPrice />
+      </Route>
     </div>
   );
 }
@@ -86,8 +92,11 @@ const mapStateToProps = state => {
     properties: state.propertiesReducer.properties,
     property: state.propertiesReducer.property,
     isLoading: state.propertiesReducer.isLoading,
-    error: state.propertiesReducer.error
+    error: state.propertiesReducer.error,
+    optimalPrice: state.optimalPriceReducer.predictedPrice,
+    // isLoading: state.optimalPriceReducer.isLoading,
+    // error: state.optimalPriceReducer.error,
   }
 }
 
-export default connect(mapStateToProps, { fetchProperties, addListing, fetchPropertyById })(App);
+export default connect(mapStateToProps, { fetchProperties, addListing, fetchPropertyById, getOptimalPrice })(App);

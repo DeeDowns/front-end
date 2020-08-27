@@ -45,13 +45,13 @@ const Property = (props) => {
       <div className='img-container'>
         <h1>{props.property.street_address}</h1>
       </div>
-      <h2>{props.property.property_type} located in {props.property.city}, {propertyData.zip}</h2>
+      <h2>{props.property.property_type} located in {props.property.city}, {props.property.zip}</h2>
       <h3>Bedrooms: {props.property.bedrooms}</h3>
       <h3>Bathrroms: {props.property.bathrooms}</h3>
       <h3>Leasable Area: {props.property.leaseable_area}</h3>
       <h3>Parking for {props.property.parking} vehicles</h3>
       <div className='button-container'>
-        <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
+        <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/${props.property.id}`)}>Edit Listing</Button>
         <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>
         <Button className='back-btn' color='success' onClick={() => history.push('/properties')}>Back</Button>
       </div>

@@ -15,7 +15,7 @@ const AllProperties = (props) => {
   const [properties, setProperties] = useState([])
   //can toggle add property component
   const [toggle, setToggle] = useState(false)
-  console.log('ALL',props)
+  // console.log('ALL',props)
 
   //Ed's axios get request
   //useEffect hook here
@@ -54,7 +54,7 @@ const AllProperties = (props) => {
         </div>
         <div className='add-listing-container'>
           <h2>Add Listing</h2>
-          {toggle && <AddProperty addListing={addListing} />}
+          {toggle && <AddProperty addListing={addListing} setToggle={setToggle}/>}
           <Button className='toggle-add' color='success' onClick={handleToggle}>{toggle ? 'Close' : 'Add Listing'}</Button>
         </div>
       </div>

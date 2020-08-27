@@ -2,30 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
-import { fetchProperties } from '../store/actions/propertiesActions'
+import { fetchProperties, fetchPropertyById } from '../store/actions/propertiesActions'
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import '../styles/EditProperty.css'
 
 
 const initialEditInputs = {
-  streetAddress: '',
+  street_address: '',
   city: '',
-  state: '',
+  // state: '',
   zip: '',
-  propertyType: '',
+  property_type: '',
   bedrooms: '',
-  bed: '',
+  beds: '',
   bathrooms: '',
-  guestsIncluded: '',
-  accommodates: '',
-  minNights: '',
-  maxNights: ''
+  guests_included: '',
+  accomodates: '',
+  min_nights: '',
+  max_nights: '',
+  // parking: '',
+  // leaseableArea: ''
 }
 
 const EditProperty = (props) => {
   const [editInputs, setEditInputs] = useState(initialEditInputs)
   const { id } = useParams()
+  let history = useHistory()
   console.log(props)
   
 
@@ -36,17 +39,38 @@ const EditProperty = (props) => {
     })
   }
 
+
+  useEffect(() => {
+    axiosWithAuth().get(`/api/properties/${id}`)
+      .then(res => {
+        console.log(res.data.properties)
+        setEditInputs(res.data.properties)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [id])
+  
   //useEffect, dependency aray [id]
   ///get property by id
   //setEditInputs to res data
-  
+
 
 
   const saveEdits = event => {
     event.preventDefault()
-    axiosWithAuth().put(`api/edit/${id}`, editInputs)
+    axiosWithAuth().put(`api/properties/${id}`, editInputs)
     .then(res => {
       console.log(res)
+      const newPropertiesArr = props.properties.map(property => {
+        if(property.id === res.data.properties) {
+          return res.data
+        } else {
+          return property
+        }
+      })
+      //how to set state from here
+      history.push(`/properties/${props.properties.id}`)
     })
     .catch(err => {
       console.log(err)
@@ -61,9 +85,9 @@ const EditProperty = (props) => {
       <Label>Street Address</Label>
         <Input
           type='text'
-          name='streetAddress'
-          id='streetAddress'
-          value={editInputs.streetAddress}
+          name='street_address'
+          id='street_address'
+          value={editInputs.street_address}
           onChange={handleChange}
         />
       </FormGroup>
@@ -153,9 +177,9 @@ const EditProperty = (props) => {
       <Label>Property Type</Label>
         <Input
           type='select'
-          name='propertyType'
-          id='propertyType'
-          value={editInputs.propertyType}
+          name='property_type'
+          id='property_type'
+          value={editInputs.property_type}
           onChange={handleChange}
         >
             <option>Single Family Home </option>
@@ -200,19 +224,19 @@ const EditProperty = (props) => {
     <Label>Number of Guests Included</Label>
         <Input
           type='number'
-          name='guestsIncluded'
-          id='guestsIncluded'
-          value={editInputs.guestsIncluded}
+          name='guests_included'
+          id='guests_included'
+          value={editInputs.guests_included}
           onChange={handleChange}
         />
       </FormGroup>
       <FormGroup>
-      <Label>Accommodates</Label>
+      <Label>Accomodates</Label>
         <Input
           type='number'
-          name='accommodates'
-          id='accommodates'
-          value={editInputs.accommodates}
+          name='accomodates'
+          id='accomodates'
+          value={editInputs.accomodates}
           onChange={handleChange}
         />
       </FormGroup>
@@ -220,9 +244,9 @@ const EditProperty = (props) => {
       <Label>Min Nights</Label>
         <Input
           type='number'
-          name='minNights'
-          id='minNights'
-          value={editInputs.minNights}
+          name='min_nights'
+          id='min_nights'
+          value={editInputs.min_nights}
           onChange={handleChange}
         />
       </FormGroup>
@@ -230,9 +254,9 @@ const EditProperty = (props) => {
       <Label>Max Nights</Label>
         <Input
           type='number'
-          name='maxNights'
-          id='maxNights'
-          value={editInputs.maxNights}
+          name='max_nights'
+          id='max_nights'
+          value={editInputs.max_nights}
           onChange={handleChange}
         />
         </FormGroup>

@@ -13,16 +13,17 @@ const initialAddInputs = {
   city: '',
   // state: '',
   zip: '',
-  propertyType: '',
+  property_type: '',
   bedrooms: '',
-  // beds: '',
+  beds: '',
   bathrooms: '',
-  // guestsIncluded: '',
-  // accommodates: '',
-  // minNights: '',
-  // maxNights: ''
-  parking: '',
-  leaseableArea: ''
+  guests_included: '',
+  accomodates: '',
+  min_nights: '',
+  max_nights: '',
+  id: new Date()
+  // parking: '',
+  // leaseableArea: ''
   
 }
 
@@ -47,10 +48,13 @@ const AddProperty = (props) => {
     event.preventDefault()
     props.addListing(addInputs)
     setAddInputs(initialAddInputs)
+    // props.setToggle(false)
     //history.pushState('/properties')
     console.log(addInputs)
 
   }
+
+  console.log(props.properties)
 
   return (
     <Form className='add-form' onSubmit={submit}>
@@ -75,7 +79,7 @@ const AddProperty = (props) => {
           onChange={handleChanges}
         />
       </FormGroup>
-      {/* <FormGroup>
+      <FormGroup>
         <Label>State</Label>
         <Input
           type='select'
@@ -136,7 +140,7 @@ const AddProperty = (props) => {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </Input>
-      </FormGroup> */}
+      </FormGroup>
       <FormGroup>
         <Label>Zip Code</Label>
         <Input
@@ -151,12 +155,12 @@ const AddProperty = (props) => {
         <Label>Property Type</Label>
         <Input
           type='select'
-          name='propertyType'
-          id='propertyType'
-          value={addInputs.propertyType}
+          name='property_type'
+          id='property_type'
+          value={addInputs.property_type}
           onChange={handleChanges}
         >
-          <option>Sing Family Home </option>
+          <option>Single Family Home </option>
           <option>Townhome </option>
           <option>Apartment </option>
           <option>Condominium </option>
@@ -184,7 +188,7 @@ const AddProperty = (props) => {
           onChange={handleChanges}
         />
       </FormGroup>
-      {/* <FormGroup>
+      <FormGroup>
         <Label>Number of Beds</Label>
         <Input
           type='number'
@@ -193,48 +197,48 @@ const AddProperty = (props) => {
           value={addInputs.beds}
           onChange={handleChanges}
         />
-      </FormGroup> */}
-      {/* <FormGroup>
+      </FormGroup>
+      <FormGroup>
         <Label>Number of Guests Included</Label>
         <Input
           type='number'
-          name='guestsIncluded'
-          id='guestsIncluded'
-          value={addInputs.guestsIncluded}
+          name='guests_included'
+          id='guests_included'
+          value={addInputs.guests_included}
           onChange={handleChanges}
         />
-      </FormGroup> */}
-      {/* <FormGroup>
+      </FormGroup>
+      <FormGroup>
         <Label>Accommodates</Label>
         <Input
           type='number'
-          name='accommodates'
-          id='accommodates'
-          value={addInputs.accommodates}
+          name='accomodates'
+          id='accomodates'
+          value={addInputs.accomodates}
           onChange={handleChanges}
         />
-      </FormGroup> */}
-      {/* <FormGroup>
+      </FormGroup>
+      <FormGroup>
         <Label>Min Nights</Label>
         <Input
           type='number'
-          name='minNights'
-          id='minNights'
-          value={addInputs.minNights}
+          name='min_nights'
+          id='min_nights'
+          value={addInputs.min_nights}
           onChange={handleChanges}
         />
-      </FormGroup> */}
-      {/* <FormGroup>
+      </FormGroup>
+      <FormGroup>
         <Label>Max Nights</Label>
         <Input
           type='number'
-          name='maxNights'
-          id='maxNights'
-          value={addInputs.maxNights}
+          name='max_nights'
+          id='max_nights'
+          value={addInputs.max_nights}
           onChange={handleChanges}
         />
-      </FormGroup> */}
-      <FormGroup>
+      </FormGroup>
+      {/* <FormGroup>
         <Label>Leaseable Area</Label>
         <Input
           type='text'
@@ -243,8 +247,8 @@ const AddProperty = (props) => {
           value={addInputs.leaseableArea}
           onChange={handleChanges}
         />
-      </FormGroup>
-      <FormGroup>
+      </FormGroup> */}
+      {/* <FormGroup>
         <Label>Parking</Label>
         <Input
           type='text'
@@ -253,7 +257,7 @@ const AddProperty = (props) => {
           value={addInputs.parking}
           onChange={handleChanges}
         />
-      </FormGroup>
+      </FormGroup> */}
 
       <Button className='add-btn' color='success'>Add Listing</Button>
 

@@ -1,26 +1,26 @@
-import { POST_LISTING_START, POST_LISTING_SUCCESS, POST_LISTING_FAILURE } from '../actions/listingActions'
+import { POST_PRICE_START, POST_PRICE_SUCCESS, POST_PRICE_FAILURE } from '../actions/optimalPriceActions'
 
 const initialState = {
-    properties: [],
+    predictedPrice: '',
     isLoading: false,
     error: ''
 }
 
-export const listingReducer = (state = initialState, action) => {
+export const optimalPriceReducer = (state = initialState, action) => {
     switch(action.type) {
-        case POST_LISTING_START:
+        case POST_PRICE_START:
             return {
                 ...state, 
                 isLoading: true,
                 error: ''
             }
-        case POST_LISTING_SUCCESS:
+        case POST_PRICE_SUCCESS:
             return {
                 ...state, 
                 isLoading: false,
-                properties: action.payload
+                predictedPrice: action.payload
         }
-        case POST_LISTING_FAILURE:
+        case POST_PRICE_FAILURE:
             return {
                 ...state, 
                 isLoading: false,
