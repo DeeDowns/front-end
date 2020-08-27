@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 // import {} from '../store/actions/listingActions'
-import { fetchProperties,  addListing  } from '../store/actions/propertiesActions'
+import { fetchProperties, addListing } from '../store/actions/propertiesActions'
 import PropertyCard from './PropertyCard'
 import AddProperty from './AddProperty'
 
@@ -15,7 +15,7 @@ const AllProperties = (props) => {
   const [properties, setProperties] = useState([])
   //can toggle add property component
   const [toggle, setToggle] = useState(false)
-  console.log('ALL',props)
+  console.log('ALL', props)
 
   //Ed's axios get request
   //useEffect hook here
@@ -47,9 +47,9 @@ const AllProperties = (props) => {
         <div className='listing-container'>
           {props.isLoading ? <h3>Fetching Properties...</h3> : null}
           {properties.map((property, indx) => (
-              <Link key={property.id} to={`/properties/${property.id}`}>
-                <PropertyCard property={property}/>
-              </Link>
+            <Link key={property.id} to={`/properties/${property.id}`}>
+              <PropertyCard property={property} />
+            </Link>
           ))}
         </div>
         <div className='add-listing-container'>
