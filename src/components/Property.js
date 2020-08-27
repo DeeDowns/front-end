@@ -15,19 +15,6 @@ const Property = (props) => {
   const [propertyData, setPropertyData] = useState({})
   const { id } = useParams()
   let history = useHistory()
-  
-  // get property by id
-  // const fetchPropertyById = id => {
-  //   axiosWithAuth().get(`/api/properties/${id}`)
-  //   .then(res => {
-  //     console.log(res)
-  //     setPropertyData(res.data.properties)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-      
-  //   })
-  // }
 
   useEffect(() => {
     props.fetchPropertyById(id)
@@ -53,6 +40,7 @@ const Property = (props) => {
 
   return (
     <div className='main-container'>
+      {props.isLoading ? <h3>Fetching Properties...</h3> : null}
       {props.property && <>
       <div className='img-container'>
         <h1>{props.property.street_address}</h1>

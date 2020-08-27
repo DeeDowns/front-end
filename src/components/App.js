@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchProperties } from '../store/actions/propertiesActions'
-import { addListing } from '../store/actions/listingActions'
+import { fetchProperties, fetchPropertyById, addListing} from '../store/actions/propertiesActions'
+// import { addListing } from '../store/actions/listingActions'
 import Home from './Home'
 import AllProperties from './AllProperties'
 import EditProperty from './EditProperty'
@@ -90,4 +90,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchProperties, addListing })(App);
+export default connect(mapStateToProps, { fetchProperties, addListing, fetchPropertyById })(App);

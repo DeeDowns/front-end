@@ -44,8 +44,9 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
-    margin: 0 1%;
+    width: 55%;
+    margin: 2% 1%;
+    align-self: flex-start;
 }
 
 .listing-container a {
