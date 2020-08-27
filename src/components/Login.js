@@ -82,7 +82,7 @@ export default function Login(props) {
   }
 
   return (
-    <Form onSubmit={login}>
+    <Form className='login-form' onSubmit={login}>
       <div>
         <h2>Login</h2>
       </div>

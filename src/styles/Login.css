@@ -1,15 +1,29 @@
-h2 {
-  text-align: center;
-}
-
-
-form {
+.login-form {
+  width: 50%;
   margin-top: 5%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
+
+h2 {
+  text-align: center;
+  font-size: 2rem
+}
+
+
+/* form {
+  margin-top: 5%;
+  text-align: center;
+} */
+
 form label {
-  text-align: left
+  text-align: left;
+  font-size: 2rem
 }
 
 .form-group{
@@ -18,4 +32,11 @@ form label {
 
 .errorText {
   font-size: 2rem;
+}
+
+.btn {
+  font-size: 1.5rem;
+  margin: 1%;
+  padding: 1%;
+
 }

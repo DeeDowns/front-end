@@ -2,33 +2,34 @@ import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addListing } from  '../store/actions/propertiesActions'
+import { addListing, fetchProperties } from  '../store/actions/propertiesActions'
 // import { fetchProperty } from '../store/actions/propertiesActions'
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import '../styles/AddProperty.css'
 
 const initialAddInputs = {
-  streetAddress: '',
+  street_address: '',
   city: '',
-  // state: '',
   zip: '',
-  property_type: '',
   bedrooms: '',
   beds: '',
   bathrooms: '',
   guests_included: '',
   accomodates: '',
-  min_nights: '',
-  max_nights: '',
-  id: new Date()
+  minumum_nights: '',
+  maximum_nights: '',
+  // id: new Date(),
   // parking: '',
   // leaseableArea: ''
+   // state: '',
+   // property_type: '',
   
 }
 
 const AddProperty = (props) => {
   const [addInputs, setAddInputs] = useState(initialAddInputs)
+  // const [toggle, setToggle] = useState(false)
   const history = useHistory()
   console.log('ADD', props)
   
@@ -41,17 +42,14 @@ const AddProperty = (props) => {
     })
   }
 
-
-
-
   const submit = event => {
-    event.preventDefault()
+    // event.preventDefault()
     props.addListing(addInputs)
-    setAddInputs(initialAddInputs)
-    // props.setToggle(false)
-    //history.pushState('/properties')
     console.log(addInputs)
 
+    setAddInputs(initialAddInputs)
+    props.setToggle(false)
+    history.push('/properties')
   }
 
   console.log(props.properties)
@@ -63,12 +61,13 @@ const AddProperty = (props) => {
         <Label>Street Address</Label>
         <Input
           type='text'
-          name='streetAddress'
-          id='streetAddress'
-          value={addInputs.streetAddress}
+          name='street_address'
+          id='street_address'
+          value={addInputs.street_address}
           onChange={handleChanges}
         />
       </FormGroup>
+
       <FormGroup>
         <Label>City</Label>
         <Input
@@ -78,6 +77,133 @@ const AddProperty = (props) => {
           value={addInputs.city}
           onChange={handleChanges}
         />
+      </FormGroup>
+  
+      <FormGroup>
+        <Label>Zip Code</Label>
+        <Input
+          type='text'
+          name='zip'
+          id='zip'
+          value={addInputs.zip}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+     
+      <FormGroup>
+        <Label>Number of Bedrooms</Label>
+        <Input
+          type='number'
+          name='bedrooms'
+          id='bedrooms'
+          value={addInputs.bedrooms}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Number of Bathrooms</Label>
+        <Input
+          type='number'
+          name='bathrooms'
+          id='bathrooms'
+          value={addInputs.bathrooms}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Number of Beds</Label>
+        <Input
+          type='number'
+          name='beds'
+          id='beds'
+          value={addInputs.beds}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Number of Guests Included</Label>
+        <Input
+          type='number'
+          name='guests_included'
+          id='guests_included'
+          value={addInputs.guests_included}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Accommodates</Label>
+        <Input
+          type='number'
+          name='accomodates'
+          id='accomodates'
+          value={addInputs.accomodates}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Min Nights</Label>
+        <Input
+          type='number'
+          name='minumum_nights'
+          id='minumum_nights'
+          value={addInputs.minumum_nights}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Max Nights</Label>
+        <Input
+          type='number'
+          name='maximum_nights'
+          id='maximum_nights'
+          value={addInputs.maximum_nights}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+
+      {/* <FormGroup>
+        <Label>Leaseable Area</Label>
+        <Input
+          type='text'
+          name='leaseableArea'
+          id='leaseableArea'
+          value={addInputs.leaseableArea}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+     <FormGroup>
+        <Label>Parking</Label>
+        <Input
+          type='text'
+          name='parking'
+          id='parking'
+          value={addInputs.parking}
+          onChange={handleChanges}
+        />
+      </FormGroup>
+          
+     <FormGroup>
+        <Label>Property Type</Label>
+        <Input
+          type='select'
+          name='property_type'
+          id='property_type'
+          value={addInputs.property_type}
+          onChange={handleChanges}
+        >
+          <option>Single Family Home </option>
+          <option>Townhome </option>
+          <option>Apartment </option>
+          <option>Condominium </option>
+          <option>Room </option>
+          <option>Other </option>
+        </Input>
       </FormGroup>
       <FormGroup>
         <Label>State</Label>
@@ -139,124 +265,7 @@ const AddProperty = (props) => {
           <option value="WV">West Virginia</option>
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label>Zip Code</Label>
-        <Input
-          type='text'
-          name='zip'
-          id='zip'
-          value={addInputs.zip}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Property Type</Label>
-        <Input
-          type='select'
-          name='property_type'
-          id='property_type'
-          value={addInputs.property_type}
-          onChange={handleChanges}
-        >
-          <option>Single Family Home </option>
-          <option>Townhome </option>
-          <option>Apartment </option>
-          <option>Condominium </option>
-          <option>Room </option>
-          <option>Other </option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label>Number of Bedrooms</Label>
-        <Input
-          type='number'
-          name='bedrooms'
-          id='bedrooms'
-          value={addInputs.bedrooms}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Number of Bathrooms</Label>
-        <Input
-          type='number'
-          name='bathrooms'
-          id='bathrooms'
-          value={addInputs.bathrooms}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Number of Beds</Label>
-        <Input
-          type='number'
-          name='beds'
-          id='beds'
-          value={addInputs.beds}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Number of Guests Included</Label>
-        <Input
-          type='number'
-          name='guests_included'
-          id='guests_included'
-          value={addInputs.guests_included}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Accommodates</Label>
-        <Input
-          type='number'
-          name='accomodates'
-          id='accomodates'
-          value={addInputs.accomodates}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Min Nights</Label>
-        <Input
-          type='number'
-          name='min_nights'
-          id='min_nights'
-          value={addInputs.min_nights}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Max Nights</Label>
-        <Input
-          type='number'
-          name='max_nights'
-          id='max_nights'
-          value={addInputs.max_nights}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-      {/* <FormGroup>
-        <Label>Leaseable Area</Label>
-        <Input
-          type='text'
-          name='leaseableArea'
-          id='leaseableArea'
-          value={addInputs.leaseableArea}
-          onChange={handleChanges}
-        />
-      </FormGroup> */}
-      {/* <FormGroup>
-        <Label>Parking</Label>
-        <Input
-          type='text'
-          name='parking'
-          id='parking'
-          value={addInputs.parking}
-          onChange={handleChanges}
-        />
+        </Input> 
       </FormGroup> */}
 
       <Button className='add-btn' color='success'>Add Listing</Button>
@@ -274,4 +283,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addListing })(AddProperty)
+export default connect(mapStateToProps, { addListing, fetchProperties })(AddProperty)
