@@ -30,7 +30,7 @@ const Property = (props) => {
   // }
 
   useEffect(() => {
-    props.fetchPropertyById(2)
+    props.fetchPropertyById(id)
   }, [id])
 
   console.log(props)
@@ -57,11 +57,11 @@ const Property = (props) => {
       <div className='img-container'>
         <h1>{props.property.street_address}</h1>
       </div>
-      <h2>{propertyData.property_type} located in {propertyData.city}, {propertyData.zip}</h2>
-      <h3>Bedrooms: {propertyData.bedrooms}</h3>
-      <h3>Bathrroms: {propertyData.bathrooms}</h3>
-      <h3>Leasable Area: {propertyData.leaseable_area}</h3>
-      <h3>Parking for {propertyData.parking} vehicles</h3>
+      <h2>{props.property.property_type} located in {props.property.city}, {propertyData.zip}</h2>
+      <h3>Bedrooms: {props.property.bedrooms}</h3>
+      <h3>Bathrroms: {props.property.bathrooms}</h3>
+      <h3>Leasable Area: {props.property.leaseable_area}</h3>
+      <h3>Parking for {props.property.parking} vehicles</h3>
       <div className='button-container'>
         <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
         <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>

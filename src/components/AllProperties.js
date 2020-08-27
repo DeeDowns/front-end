@@ -49,10 +49,8 @@ const AllProperties = (props) => {
 
         {properties.map((property, indx) => (
           <div className='listing-container'>
-            <Link to={`/properties/${property.id}`}>
-              <h2>Listing {indx + 1}</h2>
-              <p>{property.street_address}</p>
-              <PropertyCard />
+            <Link key={property.id} to={`/properties/${property.id}`}>
+              <PropertyCard property={property}/>
             </Link>
           </div>
         ))}

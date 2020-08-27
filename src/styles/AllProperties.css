@@ -41,10 +41,16 @@ h2 {
 }
 
 .listing-container {
-    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
     margin: 0 1%;
 }
 
+.listing-container a {
+    width: 95%;
+}
 
 .add-listing-container {
     width: 35%;
