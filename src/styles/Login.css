@@ -9,11 +9,21 @@ form {
 }
 
 form label {
-  text-align: left
+  text-align: left;
 }
 
-.form-group{
+
+.form-group {
   margin: 0 auto;
+}
+
+.form-group label {
+  width: 100%;
+}
+
+.form-group input {
+  width: 400px;
+  margin: 3% 0;
 }
 
 .errorText {
