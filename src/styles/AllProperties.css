@@ -41,10 +41,17 @@ h2 {
 }
 
 .listing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 55%;
-    margin: 0 1%;
+    margin: 2% 1%;
+    align-self: flex-start;
 }
 
+.listing-container a {
+    width: 95%;
+}
 
 .add-listing-container {
     width: 35%;

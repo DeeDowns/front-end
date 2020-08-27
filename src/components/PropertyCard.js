@@ -10,12 +10,8 @@ export default function PropertyCard(props) {
 
   return (
     <div className='property-card-container'>
-      {/* psuedo code below; to be removed once we get data */}
-      {/* <div>listing 1</div>
-      <div>listing 2</div>
-      <div>listing 3</div>
-      <div>listing 4</div>
-      <div>listing 5</div> */}
+      <h3>{property.street_address}</h3>
+      <p>click for more info</p>
     </div>
   )
 }
