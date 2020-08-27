@@ -20,17 +20,15 @@ const Property = (props) => {
     props.fetchPropertyById(id)
   }, [id])
 
-  console.log(props)
+  // console.log(props)
   
 
    const handleDelete = event => {
      event.preventDefault()
-     history.push('/properties')
      axiosWithAuth().delete(`/api/properties/${id}`)
      .then(res => {
-       console.log(res)
-
-       //history.push('/properties')
+      //  console.log(res)
+       history.push('/properties')
      })
      .catch(err => {
        console.log(err)
@@ -38,6 +36,7 @@ const Property = (props) => {
 
    }
 
+    console.log('PROPS', props.property)
   return (
     <div className='main-container'>
       {props.isLoading ? <h3>Fetching Properties...</h3> : null}
@@ -45,15 +44,19 @@ const Property = (props) => {
       <div className='img-container'>
         <h1>{props.property.street_address}</h1>
       </div>
-      <h2>{props.property.property_type} located in {props.property.city}, {propertyData.zip}</h2>
+      <h2>Located in {props.property.city} (Zip Code: {props.property.zip})</h2>
       <h3>Bedrooms: {props.property.bedrooms}</h3>
-      <h3>Bathrroms: {props.property.bathrooms}</h3>
-      <h3>Leasable Area: {props.property.leaseable_area}</h3>
-      <h3>Parking for {props.property.parking} vehicles</h3>
+      <h3>Bathrooms: {props.property.bathrooms}</h3>
+      <h3>Beds: {props.property.beds}</h3>
+      <h3>Number of Guests included at no additional charge: {props.property.guests_included} </h3>
+      <h3>Maximum number of Guests allowed: {props.property.accomodates}</h3>
+      <h3>Minimum nights: {props.property.minumum_nights}</h3>
+      <h3>Maximum nights: {props.property.maximum_nights}</h3>
       <div className='button-container'>
-        <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/:id`)}>Edit Listing</Button>
+        <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/${props.property.id}`)}>Edit Listing</Button>
         <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>
         <Button className='back-btn' color='success' onClick={() => history.push('/properties')}>Back</Button>
+        
       </div>
       </>}
     </div>

@@ -24,7 +24,7 @@ export const fetchPropertyById = (id) => (dispatch) => {
   dispatch({ type: FETCH_PROPERTY_START })
   axiosWithAuth().get(`/api/properties/${id}`)
     .then(res => {
-      console.log('propertiesActions', res.data.properties)
+      // console.log('propertiesActions', res.data.properties)
       dispatch({ type: FETCH_PROPERTY_ID_SUCCESS, payload: res.data})
     })
     .catch(err => {
@@ -36,13 +36,14 @@ export const fetchPropertyById = (id) => (dispatch) => {
 
 export const addListing = (newListing) => (dispatch) => {
   dispatch({ type: FETCH_PROPERTY_START })
-  axiosWithAuth().post('/api/properties', newListing)
+  axiosWithAuth().post('/api/properties/', newListing)
     .then(res => {
-      console.log(res)
-      //dispatch({ type: POST_LISTING_SUCCESS, payload: res.data })
+      // console.log(res)
+      dispatch({ type: POST_LISTING_SUCCESS, payload: res.data.properties })
+      window.location.reload(true)
     })
     .catch(err => {
       console.log(err)
-      //dispatch({ type: FETCH_LISTING_FAILURE, payload: err})
+      dispatch({ type: FETCH_PROPERTY_FAILURE, payload: err})
     })
 }

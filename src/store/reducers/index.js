@@ -2,9 +2,9 @@
 
 import { combineReducers } from 'redux'
 import {propertiesReducer} from './propertiesReducer'
-import { listingReducer } from './listingReducer'
+import { optimalPriceReducer } from './optimalPriceReducer'
 
 export const rootReducer = combineReducers({
     propertiesReducer, 
-    listingReducer
+    optimalPriceReducer
 })

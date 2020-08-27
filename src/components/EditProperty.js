@@ -2,30 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
-import { fetchProperties } from '../store/actions/propertiesActions'
+import { fetchProperties, fetchPropertyById } from '../store/actions/propertiesActions'
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import '../styles/EditProperty.css'
 
 
 const initialEditInputs = {
-  streetAddress: '',
+  street_address: '',
   city: '',
-  state: '',
   zip: '',
-  propertyType: '',
+  property_type: '',
   bedrooms: '',
-  bed: '',
+  beds: '',
   bathrooms: '',
-  guestsIncluded: '',
-  accommodates: '',
-  minNights: '',
-  maxNights: ''
+  guests_included: '',
+  accomodates: '',
+  minumum_nights: '',
+  maximum_nights: '',
+  // parking: '',
+  // leaseableArea: ''
+   // state: ''
 }
 
 const EditProperty = (props) => {
   const [editInputs, setEditInputs] = useState(initialEditInputs)
   const { id } = useParams()
+  let history = useHistory()
   console.log(props)
   
 
@@ -36,17 +39,26 @@ const EditProperty = (props) => {
     })
   }
 
-  //useEffect, dependency aray [id]
-  ///get property by id
-  //setEditInputs to res data
-  
+
+  useEffect(() => {
+    axiosWithAuth().get(`/api/properties/${id}`)
+      .then(res => {
+        console.log(res.data.properties)
+        setEditInputs(res.data.properties)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [id])
+
 
 
   const saveEdits = event => {
     event.preventDefault()
-    axiosWithAuth().put(`api/edit/${id}`, editInputs)
+    axiosWithAuth().put(`api/properties/${id}`, editInputs)
     .then(res => {
-      console.log(res)
+      // console.log(res)
+      history.push(`/properties/${id}`)
     })
     .catch(err => {
       console.log(err)
@@ -58,27 +70,117 @@ const EditProperty = (props) => {
       
       <h1>Edit Property/Listing</h1>
       <FormGroup>
-      <Label>Street Address</Label>
-        <Input
-          type='text'
-          name='streetAddress'
-          id='streetAddress'
-          value={editInputs.streetAddress}
-          onChange={handleChange}
-        />
+        <Label>Street Address</Label>
+          <Input
+            type='text'
+            name='street_address'
+            id='street_address'
+            value={editInputs.street_address}
+            onChange={handleChange}
+          />
       </FormGroup>
+
       <FormGroup>
-      <Label>City</Label>
-        <Input
-          type='text'
-          name='city'
-          id='city'
-          value={editInputs.city}
-          onChange={handleChange}
-        />
+        <Label>City</Label>
+          <Input
+            type='text'
+            name='city'
+            id='city'
+            value={editInputs.city}
+            onChange={handleChange}
+          />
       </FormGroup>
+     
       <FormGroup>
-      <Label>State</Label>
+        <Label>Zip Code</Label>
+          <Input
+            type='text'
+            name='zip'
+            id='zip'
+            value={editInputs.zip}
+            onChange={handleChange}
+          />
+      </FormGroup>
+     
+      <FormGroup>
+        <Label>Number of Bedrooms</Label>
+          <Input
+            type='number'
+            name='bedrooms'
+            id='bedrooms'
+            value={editInputs.bedrooms}
+            onChange={handleChange}
+          />
+      </FormGroup>
+
+        <FormGroup>
+          <Label>Number of Bathrooms</Label>
+            <Input
+              type='number'
+              name='bathrooms'
+              id='bathrooms'
+              value={editInputs.bathrooms}
+              onChange={handleChange}
+            />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Number of Beds</Label>
+            <Input
+              type='number'
+              name='beds'
+              id='beds'
+              value={editInputs.beds}
+              onChange={handleChange}
+            />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Number of Guests Included</Label>
+            <Input
+              type='number'
+              name='guests_included'
+              id='guests_included'
+              value={editInputs.guests_included}
+              onChange={handleChange}
+            />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Accomodates</Label>
+          <Input
+            type='number'
+            name='accomodates'
+            id='accomodates'
+            value={editInputs.accomodates}
+            onChange={handleChange}
+          />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Min Nights</Label>
+          <Input
+            type='number'
+            name='minumum_nights'
+            id='minumum_nights'
+            value={editInputs.minumum_nights}
+            onChange={handleChange}
+          />
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Max Nights</Label>
+          <Input
+            type='number'
+            name='maximum_nights'
+            id='maximum_nights'
+            value={editInputs.maximum_nights}
+            onChange={handleChange}
+          />
+        </FormGroup>
+
+         {/*<FormGroup>
+       <Label>State</Label>
         <Input
           type='select'
           name='state'
@@ -140,22 +242,12 @@ const EditProperty = (props) => {
         </Input>
       </FormGroup>
       <FormGroup>
-      <Label>Zip Code</Label>
-        <Input
-          type='text'
-          name='zip'
-          id='zip'
-          value={editInputs.zip}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
       <Label>Property Type</Label>
         <Input
           type='select'
-          name='propertyType'
-          id='propertyType'
-          value={editInputs.propertyType}
+          name='property_type'
+          id='property_type'
+          value={editInputs.property_type}
           onChange={handleChange}
         >
             <option>Single Family Home </option>
@@ -165,77 +257,8 @@ const EditProperty = (props) => {
             <option>Room </option>
             <option>Other </option>
         </Input>
-      </FormGroup>
-      <FormGroup>
-      <Label>Number of Bedrooms</Label>
-        <Input
-          type='number'
-          name='bedrooms'
-          id='bedrooms'
-          value={editInputs.bedrooms}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
-      <Label>Number of Bathrooms</Label>
-        <Input
-          type='number'
-          name='bathrooms'
-          id='bathrooms'
-          value={editInputs.bathrooms}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
-    <Label>Number of Beds</Label>
-        <Input
-          type='number'
-          name='beds'
-          id='beds'
-          value={editInputs.beds}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
-    <Label>Number of Guests Included</Label>
-        <Input
-          type='number'
-          name='guestsIncluded'
-          id='guestsIncluded'
-          value={editInputs.guestsIncluded}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
-      <Label>Accommodates</Label>
-        <Input
-          type='number'
-          name='accommodates'
-          id='accommodates'
-          value={editInputs.accommodates}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
-      <Label>Min Nights</Label>
-        <Input
-          type='number'
-          name='minNights'
-          id='minNights'
-          value={editInputs.minNights}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <FormGroup>
-      <Label>Max Nights</Label>
-        <Input
-          type='number'
-          name='maxNights'
-          id='maxNights'
-          value={editInputs.maxNights}
-          onChange={handleChange}
-        />
-        </FormGroup>
+      </FormGroup> */}
+
       <Button className='save-btn' color='success'>Save Changes</Button>
 
     </Form>
