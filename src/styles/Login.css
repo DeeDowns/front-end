@@ -12,6 +12,9 @@ form label {
   text-align: left;
 }
 
+form .btn {
+  font-size: 2rem;
+}
 
 .form-group {
   margin: 0 auto;
@@ -29,3 +32,4 @@ form label {
 .errorText {
   font-size: 2rem;
 }
+
