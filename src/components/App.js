@@ -37,6 +37,7 @@ function App(props) {
           <Link to='/properties'>Properties</Link>
         </nav>
       </header>
+      
 
       <Route exact path='/register'>
         <Register />
@@ -57,6 +58,10 @@ function App(props) {
       <PrivateRoute exact path='/properties'>
         <AllProperties />
       </PrivateRoute>
+
+      <Route exact path='/'>
+        <Home />
+      </Route>
 
       <Route exact path='/optimal-price'>
         <OptimalPrice />

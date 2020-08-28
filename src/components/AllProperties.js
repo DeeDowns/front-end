@@ -67,7 +67,9 @@ const AllProperties = (props) => {
           <h2>Your Properties</h2>
           {properties.map((property, indx) => (
             <Link key={property.id} to={`/properties/${property.id}`}>
+              <div className='card-img'></div>
               <PropertyCard property={property} />
+              
             </Link>
           ))}
         </div>

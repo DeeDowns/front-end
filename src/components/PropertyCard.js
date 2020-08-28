@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/PropertyCard.css'
-import  { Card, CardTitle, CardText } from 'reactstrap';
+import  { Card, CardTitle, CardText, CardImg} from 'reactstrap';
 
 export default function PropertyCard(props) {
 
