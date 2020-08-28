@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-<<<<<<< HEAD
 import { fetchProperties,  addListing  } from '../store/actions/propertiesActions'
-=======
-// import {} from '../store/actions/listingActions'
-import { fetchProperties, addListing } from '../store/actions/propertiesActions'
->>>>>>> origin
 import PropertyCard from './PropertyCard'
 import AddProperty from './AddProperty'
 import OptimalPrice from './OptimalPrice'
