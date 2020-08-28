@@ -22,20 +22,6 @@ import '../styles/App.css'
 function App(props) {
   console.log('APP', props)
 
-  //Move to AllProperties Component
-  // const [properties, setProperties] = useState([]);
-
-  // const getProperties = () => {
-  //   axios.get('')
-  //     .then(res => {
-  //       console.log(res)
-  //       // setProperties()
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
-
   useEffect(() => {
     props.fetchProperties()
   }, [])
@@ -45,7 +31,9 @@ function App(props) {
       <header>
         <img src={require('../assests/BW-AirPrice.gif')} alt='logo' />
         <nav>
-          <Link to='/'>Home</Link>
+          {/* <Link  to='/'> */}
+            <a href='agitated-morse-a55b40.netlify.app'>Home</a>
+            {/* </Link> */}
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
           <Link to='/properties'>Properties</Link>

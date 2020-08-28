@@ -157,7 +157,7 @@ const OptimalPrice = props => {
         </Form>
         <h1>Price: {Number(price).toFixed(2)}</h1>
         </div>
-    )``
+    )
 }
 
 const mapStateToProps = state => {
