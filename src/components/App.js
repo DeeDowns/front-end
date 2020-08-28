@@ -58,10 +58,6 @@ function App(props) {
         <AllProperties />
       </PrivateRoute>
 
-      <Route exact path='/'>
-        <Home />
-      </Route>
-
       <Route exact path='/optimal-price'>
         <OptimalPrice />
       </Route>
