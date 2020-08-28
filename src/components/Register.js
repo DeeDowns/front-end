@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { Button, Label, FormGroup, Input } from 'reactstrap'
+import { Button, Label, FormGroup, Input, Form } from 'reactstrap'
 import '../styles/Register.css'
 
 
@@ -46,12 +46,8 @@ const Register = (props) => {
       })
   }
   return (
-    <form onSubmit={register}>
-      <div>
+      <Form className='register-form' onSubmit={register}>
         <h2>Register</h2>
-      </div>
-
-      <div>
         <FormGroup>
           <Label>Name:&nbsp;
             <Input
@@ -88,9 +84,9 @@ const Register = (props) => {
           </Label>
         </FormGroup>
 
-      </div>
+    
       <Button color='success'>Sign Up</Button>
-    </form>
+    </Form>
 
 
   )
