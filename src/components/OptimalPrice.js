@@ -1,8 +1,10 @@
 import React, {useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { getOptimalPrice } from '../store/actions/optimalPriceActions'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap'
+import '../styles/OptimalPrice.css'
 
 const initalInputs = {
     bedrooms: '',
@@ -16,6 +18,8 @@ const initalInputs = {
 const OptimalPrice = props => {
     const [inputs, setInputs] = useState(initalInputs)
     const [price, setPrice] = useState('')
+    const [priceLoading, setPriceLoading] = useState(false)
+    const history = useHistory()
     console.log('PRICE', props)
 
     
@@ -49,14 +53,17 @@ const OptimalPrice = props => {
   //https://nnn-ds16.herokuapp.com/#/default/predict
   //https://nate-ds-bw.herokuapp.com/predict
  const getPrice = event => {
+     setPriceLoading(true)
      event.preventDefault()
      axios.post('https://nnn-ds16.herokuapp.com/predict', inputs)
      .then( res => {
          console.log('POST RES',res)
          setPrice(res.data.predicted_price)
+         setPriceLoading(false)
      })  
      .catch(err => {
          console.log(err)
+         setPriceLoading(false)
      }) 
      
  }
@@ -73,89 +80,111 @@ const OptimalPrice = props => {
 //   }
 
     return (
-        <div>
-    
+        <div className='price-container'>
             <Form className='price-form' onSubmit={getPrice}>
-            <FormGroup>
-                <Label>Number of Bedrooms</Label>
-                <Input
-                    type='number'
-                    name='bedrooms'
-                    id='bedrooms'
-                    value={inputs.bedrooms}
-                    onChange={handleChange}
-                />
-            </FormGroup>
+                <Row form>
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label># of Guests Included</Label>
+                            <Input
+                                type='number'
+                                name='guests_included'
+                                id='guests_included'
+                                value={inputs.guests_included}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
 
-            <FormGroup>
-                <Label>Number of Bathrooms</Label>
-                <Input
-                    type='number'
-                    name='bathrooms'
-                    id='bathrooms'
-                    value={inputs.bathrooms}
-                    onChange={handleChange}
-                />
-            </FormGroup>
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label>Accommodates</Label>
+                            <Input
+                                type='number'
+                                name='accomodates'
+                                id='accomodates'
+                                value={inputs.accomodates}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
 
-            <FormGroup>
-                <Label>Number of Beds</Label>
-                <Input
-                    type='number'
-                    name='beds'
-                    id='beds'
-                    value={inputs.beds}
-                    onChange={handleChange}
-                />
-            </FormGroup>
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label> # of Bedrooms</Label>
+                            <Input
+                                type='number'
+                                name='bedrooms'
+                                id='bedrooms'
+                                value={inputs.bedrooms}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
 
-            <FormGroup>
-                <Label>Number of Guests Included</Label>
-                <Input
-                    type='number'
-                    name='guests_included'
-                    id='guests_included'
-                    value={inputs.guests_included}
-                    onChange={handleChange}
-                />
-            </FormGroup>
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label># of Beds</Label>
+                            <Input
+                                type='number'
+                                name='beds'
+                                id='beds'
+                                value={inputs.beds}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
 
-            <FormGroup>
-                <Label>Accomodates</Label>
-                <Input
-                    type='number'
-                    name='accomodates'
-                    id='accomodates'
-                    value={inputs.accomodates}
-                    onChange={handleChange}
-                />
-            </FormGroup>
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label>Bathrooms</Label>
+                            <Input
+                                type='number'
+                                name='bathrooms'
+                                id='bathrooms'
+                                value={inputs.bathrooms}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
+                    
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label>Min Nights</Label>
+                            <Input
+                                type='number'
+                                name='min_nights'
+                                id='min_nights'
+                                value={inputs.min_nights}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
 
-            <FormGroup>
-                <Label>Min Nights</Label>
-                <Input
-                    type='number'
-                    name='min_nights'
-                    id='min_nights'
-                    value={inputs.min_nights}
-                    onChange={handleChange}
-                />
-            </FormGroup>
-
-            <FormGroup>
-                <Label>Max Nights</Label>
-                <Input
-                    type='number'
-                    name='max_nights'
-                    id='max_nights'
-                    value={inputs.max_nights}
-                    onChange={handleChange}
-                />
-            </FormGroup>
-            <Button className='save-btn' color='success'>Save Changes</Button>
-
+                    <Col md={4}>
+                        <FormGroup>
+                            <Label>Max Nights</Label>
+                            <Input
+                                type='number'
+                                name='max_nights'
+                                id='max_nights'
+                                value={inputs.max_nights}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
+                </Row>
+            <div className='btn-group'>
+                <Button className='save-btn' color='success'>Get Price</Button>
+            </div>
         </Form>
-        <h1>Price: {Number(price).toFixed(2)}</h1>
+       
+        <div className='predictor-container'>
+            {priceLoading ? <h2>calculating...  <Spinner color="success" style={{ width: '3rem', height: '3rem' }} />{' '}</h2> :  <h2>Your AirBnB Optimal Rate is ${Number(price).toFixed(2)} per night</h2>}
+           
+            
+        </div>
+
         </div>
     )
 }

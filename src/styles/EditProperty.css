@@ -20,7 +20,15 @@ label {
     font-size: 1.5rem;
 }
 
+.edit-btn-group {
+    width: 30%;
+}
+
 .save-btn {
     font-size: 1.5rem;
+    margin: 1%;
+}
+.edit-btn-group .cancel-btn {
+    width: 30%;
     margin: 1%;
 }

@@ -22,6 +22,7 @@ export default function Login(props) {
 
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
+  const [user, setUser] = useState('')
 
 
 
@@ -40,7 +41,7 @@ export default function Login(props) {
 
         //send token to local storage
         localStorage.setItem('token', res.data.token)
-
+        setUser(res.data.message)
 
         //redirect to register page
         history.push('/properties')
@@ -49,6 +50,8 @@ export default function Login(props) {
         console.log(err)
       })
   }
+
+  console.log(user)
 
   const inputChange = (name, value) => {
     yup

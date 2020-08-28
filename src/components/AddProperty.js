@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { addListing, fetchProperties } from  '../store/actions/propertiesActions'
 // import { fetchProperty } from '../store/actions/propertiesActions'
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
 import '../styles/AddProperty.css'
 
 const initialAddInputs = {
@@ -43,7 +43,7 @@ const AddProperty = (props) => {
   }
 
   const submit = event => {
-    // event.preventDefault()
+    event.preventDefault()
     props.addListing(addInputs)
     console.log(addInputs)
 
@@ -56,8 +56,9 @@ const AddProperty = (props) => {
 
   return (
     <Form className='add-form' onSubmit={submit}>
-      <h2>Add Property/Listing</h2>
-      <FormGroup>
+      <h2>Complete form to add new property</h2>
+      <Row form>
+      <FormGroup width='80%'>
         <Label>Street Address</Label>
         <Input
           type='text'
@@ -267,9 +268,9 @@ const AddProperty = (props) => {
           <option value="WY">Wyoming</option>
         </Input> 
       </FormGroup> */}
-
-      <Button className='add-btn' color='success'>Add Listing</Button>
-
+      </Row>
+      <Button className='add-btn' color='success'>Add</Button>
+      
     </Form>
   )
 }

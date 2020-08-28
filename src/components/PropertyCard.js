@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/PropertyCard.css'
+import  { Card, CardTitle, CardText } from 'reactstrap';
 
 export default function PropertyCard(props) {
 
@@ -9,9 +10,9 @@ export default function PropertyCard(props) {
 
 
   return (
-    <div className='property-card-container'>
-      <h3>{property.street_address}</h3>
-      <p>click for more info</p>
-    </div>
+    <Card style={{ backgroundColor: '#333', borderColor: '#333' }} className='property-card-container'>
+      <CardTitle className='title'>{property.street_address}</CardTitle>
+      <CardText className='text'>click for more info</CardText>
+    </Card>
   )
 }

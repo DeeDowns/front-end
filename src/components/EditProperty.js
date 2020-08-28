@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { fetchProperties, fetchPropertyById } from '../store/actions/propertiesActions'
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Col, Row } from 'reactstrap'
 import '../styles/EditProperty.css'
 
 
@@ -68,7 +68,8 @@ const EditProperty = (props) => {
   return (
     <Form className='edit-form' onSubmit={saveEdits}>
       
-      <h1>Edit Property/Listing</h1>
+      <h1>Edit Your Property</h1>
+      <Row form>
       <FormGroup>
         <Label>Street Address</Label>
           <Input
@@ -178,7 +179,7 @@ const EditProperty = (props) => {
             onChange={handleChange}
           />
         </FormGroup>
-
+        </Row>
          {/*<FormGroup>
        <Label>State</Label>
         <Input
@@ -258,8 +259,10 @@ const EditProperty = (props) => {
             <option>Other </option>
         </Input>
       </FormGroup> */}
-
-      <Button className='save-btn' color='success'>Save Changes</Button>
+      <div className='edit-btn-group'>
+        <Button className='save-btn' color='success'>Save Changes</Button>
+        <Button className='cancel-btn' color='success' onClick={() => history.push(`/properties/${id}`)}>Cancel</Button>
+      </div>
 
     </Form>
   )
