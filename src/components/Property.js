@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties, fetchPropertyById } from '../store/actions/propertiesActions'
 
-import { Button } from 'reactstrap'
+import { Button, Spinner, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap'
 import '../styles/Property.css'
 
 
@@ -39,19 +39,53 @@ const Property = (props) => {
     console.log('PROPS', props.property)
   return (
     <div className='main-container'>
-      {props.isLoading ? <h3>Fetching Properties...</h3> : null}
+      {props.isLoading ? <h3>Fetching Properties......<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></h3> : null}
       {props.property && <>
       <div className='img-container'>
-        <h1>{props.property.street_address}</h1>
+          <h1>Your Property: <br/>{props.property.street_address}</h1>
       </div>
-      <h2>Located in {props.property.city} (Zip Code: {props.property.zip})</h2>
-      <h3>Bedrooms: {props.property.bedrooms}</h3>
-      <h3>Bathrooms: {props.property.bathrooms}</h3>
-      <h3>Beds: {props.property.beds}</h3>
-      <h3>Number of Guests included at no additional charge: {props.property.guests_included} </h3>
-      <h3>Maximum number of Guests allowed: {props.property.accomodates}</h3>
-      <h3>Minimum nights: {props.property.minumum_nights}</h3>
-      <h3>Maximum nights: {props.property.maximum_nights}</h3>
+    
+      <ListGroup horizontal>
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading>Location</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.city} (Zip Code: {props.property.zip})</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading># of Bedrooms</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.bedrooms}</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading># of Bathrooms</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.bathrooms}</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading># of Beds </ListGroupItemHeading>
+            <ListGroupItemText>{props.property.beds}</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading># of Guests Included</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.guests_included}</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading>Accommodates</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.accomodates}</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading>Minimum Nights</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.minumum_nights}</ListGroupItemText>
+        </ListGroupItem>
+
+        <ListGroupItem style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <ListGroupItemHeading>Maximum Nights</ListGroupItemHeading>
+            <ListGroupItemText>{props.property.maximum_nights}</ListGroupItemText>
+        </ListGroupItem>
+      </ListGroup>
       <div className='button-container'>
         <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/${props.property.id}`)}>Edit Listing</Button>
         <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>

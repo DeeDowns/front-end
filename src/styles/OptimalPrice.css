@@ -1,0 +1,49 @@
+.price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.predictor-container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-form {
+    width: 65%;
+    margin: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.predictor-container h2 {
+    width: 70%;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.form-group {
+    margin: 0 0 1% 1%;
+    padding: 1%;
+    width: 80%
+}
+
+.form-group label {
+    width: 95%;
+}
+
+.btn-group {
+    width: 30%;
+    margin: 1%;
+}
+
+.col-md-4 {
+    margin: 0;
+}
