@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { getOptimalPrice } from '../store/actions/optimalPriceActions'
-import { Col, Row, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup, Label, Input, Spinner, Card, CardTitle, CardText } from 'reactstrap'
 import '../styles/OptimalPrice.css'
 
 const initalInputs = {
@@ -109,14 +109,15 @@ const OptimalPrice = props => {
                         </FormGroup>
                     </Col>
 
+
                     <Col md={4}>
                         <FormGroup>
-                            <Label> # of Bedrooms</Label>
+                            <Label>Max Nights</Label>
                             <Input
                                 type='number'
-                                name='bedrooms'
-                                id='bedrooms'
-                                value={inputs.bedrooms}
+                                name='max_nights'
+                                id='max_nights'
+                                value={inputs.max_nights}
                                 onChange={handleChange}
                             />
                         </FormGroup>
@@ -161,14 +162,16 @@ const OptimalPrice = props => {
                         </FormGroup>
                     </Col>
 
+
+
                     <Col md={4}>
                         <FormGroup>
-                            <Label>Max Nights</Label>
+                            <Label> # of Bedrooms</Label>
                             <Input
                                 type='number'
-                                name='max_nights'
-                                id='max_nights'
-                                value={inputs.max_nights}
+                                name='bedrooms'
+                                id='bedrooms'
+                                value={inputs.bedrooms}
                                 onChange={handleChange}
                             />
                         </FormGroup>
@@ -179,11 +182,9 @@ const OptimalPrice = props => {
             </div>
         </Form>
        
-        <div className='predictor-container'>
-            {priceLoading ? <h2>calculating...  <Spinner color="success" style={{ width: '3rem', height: '3rem' }} />{' '}</h2> :  <h2>Your AirBnB Optimal Rate is ${Number(price).toFixed(2)} per night</h2>}
-           
-            
-        </div>
+        <Card style={{ backgroundColor: '#333', borderColor: '#333' }}  className='predictor-container'>
+            {priceLoading ? <CardTitle>calculating...  <Spinner color="success" style={{ width: '3rem', height: '3rem' }} />{' '}</CardTitle> :  <CardTitle>Your AirBnB Optimal Rate is ${Number(price).toFixed(2)} per night</CardTitle>}  
+        </Card>
 
         </div>
     )
