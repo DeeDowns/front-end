@@ -14,8 +14,6 @@ import OptimalPrice from './OptimalPrice'
 
 import '../styles/App.css'
 
-
-
 function App(props) {
   console.log('APP', props)
 
@@ -28,10 +26,10 @@ function App(props) {
       <header>
         <img src={require('../assests/BW-AirPrice.gif')} alt='logo' />
         <nav>
-          <a href='https://agitated-morse-a55b40.netlify.app'>Home</a>
+          {/* <a href='https://agitated-morse-a55b40.netlify.app'>Home</a> */}
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
-          <Link to='/properties'>Properties</Link>
+          <Link to='/properties'>Dashboard</Link>
         </nav>
       </header>
       

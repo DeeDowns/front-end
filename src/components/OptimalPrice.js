@@ -22,6 +22,8 @@ const OptimalPrice = props => {
     const [priceLoading, setPriceLoading] = useState(false)
     console.log('PRICE', props)
     const { id } = useParams()
+    const [minNights, setMinNights] = useState('')
+    const [maxNights, setMaxNights] = useState('')
 
     
   const handleChange = event => {
@@ -35,12 +37,17 @@ const OptimalPrice = props => {
     axiosWithAuth().get(`/api/properties/${id}`)
       .then(res => {
         console.log(res.data.properties)
+        console.log('MIN',res.data.properties.minumum_nights)
+        console.log('MAX',res.data.properties.maximum_nights)
         setInputs(res.data.properties)
+        setMinNights(res.data.properties.minumum_nights)
+        setMaxNights(res.data.properties.maximum_nights)
       })
       .catch(err => {
         console.log(err)
       })
   }, [id])
+
 
   //https://nnn-ds16.herokuapp.com/#/default/predict
   //https://nate-ds-bw.herokuapp.com/predict
@@ -98,7 +105,7 @@ const OptimalPrice = props => {
                                 type='number'
                                 name='max_nights'
                                 id='max_nights'
-                                value={inputs.max_nights}
+                                value={inputs.max_nights || maxNights}
                                 onChange={handleChange}
                             />
                         </FormGroup>
@@ -137,7 +144,7 @@ const OptimalPrice = props => {
                                 type='number'
                                 name='min_nights'
                                 id='min_nights'
-                                value={inputs.min_nights}
+                                value={inputs.min_nights || minNights}
                                 onChange={handleChange}
                             />
                         </FormGroup>

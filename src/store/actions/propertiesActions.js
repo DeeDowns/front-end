@@ -38,7 +38,7 @@ export const addListing = (newListing) => (dispatch) => {
   dispatch({ type: FETCH_PROPERTY_START })
   axiosWithAuth().post('/api/properties/', newListing)
     .then(res => {
-      // console.log(res)
+      console.log(res)
       dispatch({ type: POST_LISTING_SUCCESS, payload: res.data.properties })
       window.location.reload(true)
     })
