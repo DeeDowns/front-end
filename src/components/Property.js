@@ -1,10 +1,11 @@
-import React, { useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties, fetchPropertyById } from '../store/actions/propertiesActions'
+import OptimalPrice from './OptimalPrice'
 
-import { Button, Spinner, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap'
+import { Button, Spinner, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, UncontrolledCollapse } from 'reactstrap'
 import '../styles/Property.css'
 
 
@@ -12,7 +13,6 @@ import '../styles/Property.css'
 
 const Property = (props) => {
   console.log('PROPERTY', props)
-  const [propertyData, setPropertyData] = useState({})
   const { id } = useParams()
   let history = useHistory()
 
@@ -39,10 +39,18 @@ const Property = (props) => {
     console.log('PROPS', props.property)
   return (
     <div className='main-container'>
+      
       {props.isLoading ? <h3>Fetching Properties......<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></h3> : null}
       {props.property && <>
       <div className='img-container'>
           <h1>Your Property: <br/>{props.property.street_address}</h1>
+      </div>
+
+      <div className='price-div'>
+      <Button className='price-btn' style={{ backgroundColor: '#406c47'}} id='toggler' > Optimal Price Calculator</Button>
+      <UncontrolledCollapse toggler='#toggler'>
+        <OptimalPrice />
+       </UncontrolledCollapse>
       </div>
     
       <ListGroup horizontal>
@@ -87,9 +95,9 @@ const Property = (props) => {
         </ListGroupItem>
       </ListGroup>
       <div className='button-container'>
-        <Button className='edit-btn' color='success' onClick={() => history.push(`/edit-property/${props.property.id}`)}>Edit Listing</Button>
-        <Button className='delete-btn' color='success' onClick={handleDelete}>Remove Listing</Button>
-        <Button className='back-btn' color='success' onClick={() => history.push('/properties')}>Back</Button>
+        <Button className='edit-btn' style={{ backgroundColor: '#406c47'}} onClick={() => history.push(`/edit-property/${props.property.id}`)}>Edit Listing</Button>
+        <Button className='delete-btn' style={{ backgroundColor: '#406c47'}} onClick={handleDelete}>Remove Listing</Button>
+        <Button className='back-btn' style={{ backgroundColor: '#406c47'}} onClick={() => history.push('/properties')}>Back</Button>
         
       </div>
       </>}

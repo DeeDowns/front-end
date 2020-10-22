@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties,  addListing  } from '../store/actions/propertiesActions'
@@ -17,11 +16,8 @@ const AllProperties = (props) => {
   const [properties, setProperties] = useState([])
   //can toggle add property component
   const [toggle, setToggle] = useState(false)
-  const [togglePrice, setTogglePrice] = useState(false)
   const [fadeIn, setFadeIn] = useState(false)
   
-  // const toggleFade = setFadeIn(!fadeIn)
-  const history = useHistory()
 
   //Ed's axios get request
   //useEffect hook here
@@ -33,7 +29,7 @@ const AllProperties = (props) => {
         console.log(res.data.properties)
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.message)
       })
   }
 
@@ -53,7 +49,7 @@ const AllProperties = (props) => {
       </div>
 
       <div className='price-div'>
-      <Button className='price-btn' color='success' id='toggler' > Optimal Price Calculator</Button>
+      <Button className='price-btn' style={{ backgroundColor: '#406c47'}} id='toggler' > Optimal Price Calculator</Button>
       <UncontrolledCollapse toggler='#toggler'>
         <OptimalPrice />
        </UncontrolledCollapse>
@@ -75,7 +71,7 @@ const AllProperties = (props) => {
         </div>
         <div className='add-listing-container'>
           <h2>Have an additional property?</h2>
-          <Button className='toggle-add' color='success' onClick={handleAddToggle}>{toggle ? 'Close' : 'Open Form'}</Button>
+          <Button className='toggle-add' style={{ backgroundColor: '#406c47'}} onClick={handleAddToggle}>{toggle ? 'Close' : 'Open Form'}</Button>
           <Fade in={fadeIn}>
               <AddProperty addListing={addListing} setToggle={setToggle} toggle={toggle}/>
           </Fade>

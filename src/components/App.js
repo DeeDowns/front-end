@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link, Route, Redirect } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties, fetchPropertyById, addListing} from '../store/actions/propertiesActions'
 import { getOptimalPrice } from '../store/actions/optimalPriceActions'
-// import { addListing } from '../store/actions/listingActions'
 import Home from './Home'
 import AllProperties from './AllProperties'
 import EditProperty from './EditProperty'
@@ -13,7 +11,6 @@ import Login from './Login'
 import Register from './Register'
 import PrivateRoute from './PrivateRoute'
 import OptimalPrice from './OptimalPrice'
-import AddProperty from './AddProperty';
 
 import '../styles/App.css'
 

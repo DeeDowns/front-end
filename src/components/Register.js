@@ -42,7 +42,7 @@ const Register = (props) => {
         history.push('/login')
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.message, err.name)
       })
   }
   return (
