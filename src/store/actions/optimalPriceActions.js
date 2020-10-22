@@ -1,4 +1,3 @@
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import axios from 'axios'
 
 export const POST_PRICE_START = 'POST_PRICE_START'

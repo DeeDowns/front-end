@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addListing, fetchProperties } from  '../store/actions/propertiesActions'
-// import { fetchProperty } from '../store/actions/propertiesActions'
 
-import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Row } from 'reactstrap'
 import '../styles/AddProperty.css'
 
 const initialAddInputs = {

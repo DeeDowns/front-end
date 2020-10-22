@@ -1,9 +1,10 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 import axios from 'axios'
 import { getOptimalPrice } from '../store/actions/optimalPriceActions'
-import { Col, Row, Button, Form, FormGroup, Label, Input, Spinner, Card, CardTitle, CardText } from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup, Label, Input, Spinner, Card, CardTitle, } from 'reactstrap'
 import '../styles/OptimalPrice.css'
 
 const initalInputs = {
@@ -19,8 +20,8 @@ const OptimalPrice = props => {
     const [inputs, setInputs] = useState(initalInputs)
     const [price, setPrice] = useState('')
     const [priceLoading, setPriceLoading] = useState(false)
-    const history = useHistory()
     console.log('PRICE', props)
+    const { id } = useParams()
 
     
   const handleChange = event => {
@@ -30,25 +31,16 @@ const OptimalPrice = props => {
     })
   }
 
-//  const getPrice = event => {
-//     event.preventDefault()
-//     axios.get('https://nate-ds-bw.herokuapp.com/openapi.json')
-//       .then(res => {
-//         console.log('PRICE RESPONSE', res.data.components.schemas.BnB.properties)
-//         const properties = res.data.components.schemas.BnB.properties
-//         //Gives the keys and values of the properties in the API
-//         var k = Object.keys(properties)
-//         var v = Object.values(properties)
-//         //K will give the names of the features, v will give both
-//          console.log('Results', k, v)
-//         // v has the shape {"bathrooms": 2}
-//          return v;
-//       })
-//       .then()
-//       .catch(err => {
-//         console.log(err)    
-//       })
-//   }
+  useEffect(() => {
+    axiosWithAuth().get(`/api/properties/${id}`)
+      .then(res => {
+        console.log(res.data.properties)
+        setInputs(res.data.properties)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [id])
 
   //https://nnn-ds16.herokuapp.com/#/default/predict
   //https://nate-ds-bw.herokuapp.com/predict
@@ -67,17 +59,6 @@ const OptimalPrice = props => {
      }) 
      
  }
-
-    console.log(Number(price).toFixed(2))
-
-//   useEffect(() => {
-//       getPrice()
-//   }, [])
-
-//   const getPrice = event => {
-//       event.preventDefault()
-//       getOptimalPrice()
-//   }
 
     return (
         <div className='price-container'>
@@ -178,7 +159,7 @@ const OptimalPrice = props => {
                     </Col>
                 </Row>
             <div className='btn-group'>
-                <Button className='save-btn' color='success'>Get Price</Button>
+                <Button className='save-btn' style={{ backgroundColor: '#406c47'}}>Get Price</Button>
             </div>
         </Form>
        
