@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema'
 import { Button, Form, Label, FormGroup, Input, FormText } from 'reactstrap'
+import { TweenMax } from 'gsap'
 
 import '../styles/Login.css'
 
@@ -23,8 +24,18 @@ export default function Login(props) {
   const [userLogin, setUserLogin] = useState(intitialLoginForm)
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
   const [user, setUser] = useState('')
+  
+  const loginHrTop = useRef(null)
+  const loginHrBottom = useRef(null)
 
-
+  useEffect(() => {
+    TweenMax.to(
+      loginHrTop.current, 3, {y: 40}, {y: -40},
+    )
+    TweenMax.to(
+      loginHrBottom.current,  3, {y: -40}, {y: 40}
+    )
+  }, [])
 
   //so we can redirect to register page
   let history = useHistory()
@@ -85,40 +96,45 @@ export default function Login(props) {
   }
 
   return (
-    <Form className='login-form' onSubmit={login}>
-      <div>
-        <h2>Login</h2>
-      </div>
+    <div className='form-container'>
 
-      <div>
-        <FormText className='errorText'>{formErrors.email}</FormText>
-        <FormText className='errorText'>{formErrors.password}</FormText>
-      </div>
+      <hr className='top' ref={loginHrTop}/>
 
-      <FormGroup>
-        <Label>Email:&nbsp;
-          <Input
-            type='email'
-            name='email'
-            value={userLogin.email}
-            placeholder='email'
-            onChange={onInputChange}
-          />
-        </Label>
-      </FormGroup>
 
-      <FormGroup>
-        <Label>Password:&nbsp;
-          <Input
-            type='password'
-            name='password'
-            value={userLogin.password}
-            placeholder='password'
-            onChange={onInputChange}
-          />
-        </Label>
-      </FormGroup>
-      <Button color='success'>Login</Button>
-    </Form>
+      <Form className='login-form' onSubmit={login}>
+        <div>
+          <FormText className='errorText'>{formErrors.email}</FormText>
+          <FormText className='errorText'>{formErrors.password}</FormText>
+        </div>
+
+        <FormGroup>
+          <Label>Email:&nbsp;
+            <Input
+              type='email'
+              name='email'
+              value={userLogin.email}
+              placeholder='Type your email'
+              onChange={onInputChange}
+            />
+          </Label>
+        </FormGroup>
+
+        <FormGroup>
+          <Label>Password:&nbsp;
+            <Input
+              type='password'
+              name='password'
+              value={userLogin.password}
+              placeholder='Type your password'
+              onChange={onInputChange}
+            />
+          </Label>
+        </FormGroup>
+        <Button style={{ backgroundColor: '#406c47'}}>Login</Button>
+      </Form>
+
+      <hr className='bottom' ref={loginHrBottom}/>
+
+    </div>
   )
 }

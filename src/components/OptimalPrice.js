@@ -22,6 +22,8 @@ const OptimalPrice = props => {
     const [priceLoading, setPriceLoading] = useState(false)
     console.log('PRICE', props)
     const { id } = useParams()
+    const [minNights, setMinNights] = useState('')
+    const [maxNights, setMaxNights] = useState('')
 
     
   const handleChange = event => {
@@ -35,7 +37,11 @@ const OptimalPrice = props => {
     axiosWithAuth().get(`/api/properties/${id}`)
       .then(res => {
         console.log(res.data.properties)
+        console.log('MIN',res.data.properties.minumum_nights)
+        console.log('MAX',res.data.properties.maximum_nights)
         setInputs(res.data.properties)
+        setMinNights(res.data.properties.minumum_nights)
+        setMaxNights(res.data.properties.maximum_nights)
       })
       .catch(err => {
         console.log(err)
@@ -64,20 +70,8 @@ const OptimalPrice = props => {
         <div className='price-container'>
             <Form className='price-form' onSubmit={getPrice}>
                 <Row form>
-                    <Col md={4}>
-                        <FormGroup>
-                            <Label># of Guests Included</Label>
-                            <Input
-                                type='number'
-                                name='guests_included'
-                                id='guests_included'
-                                value={inputs.guests_included}
-                                onChange={handleChange}
-                            />
-                        </FormGroup>
-                    </Col>
 
-                    <Col md={4}>
+                    <Col md={3}>
                         <FormGroup>
                             <Label>Accommodates</Label>
                             <Input
@@ -90,23 +84,35 @@ const OptimalPrice = props => {
                         </FormGroup>
                     </Col>
 
-
-                    <Col md={4}>
+                    <Col md={3}>
                         <FormGroup>
-                            <Label>Max Nights</Label>
+                            <Label>Guests Included</Label>
                             <Input
                                 type='number'
-                                name='max_nights'
-                                id='max_nights'
-                                value={inputs.max_nights}
+                                name='guests_included'
+                                id='guests_included'
+                                value={inputs.guests_included}
                                 onChange={handleChange}
                             />
                         </FormGroup>
                     </Col>
 
-                    <Col md={4}>
+                    <Col md={3}>
                         <FormGroup>
-                            <Label># of Beds</Label>
+                            <Label>Bedrooms</Label>
+                            <Input
+                                type='number'
+                                name='bedrooms'
+                                id='bedrooms'
+                                value={inputs.bedrooms}
+                                onChange={handleChange}
+                            />
+                        </FormGroup>
+                    </Col>
+
+                    <Col md={3}>
+                        <FormGroup>
+                            <Label>Beds</Label>
                             <Input
                                 type='number'
                                 name='beds'
@@ -117,7 +123,7 @@ const OptimalPrice = props => {
                         </FormGroup>
                     </Col>
 
-                    <Col md={4}>
+                    <Col md={3}>
                         <FormGroup>
                             <Label>Bathrooms</Label>
                             <Input
@@ -130,33 +136,34 @@ const OptimalPrice = props => {
                         </FormGroup>
                     </Col>
                     
-                    <Col md={4}>
+                    <Col md={3}>
                         <FormGroup>
                             <Label>Min Nights</Label>
                             <Input
                                 type='number'
                                 name='min_nights'
                                 id='min_nights'
-                                value={inputs.min_nights}
+                                value={inputs.min_nights || minNights}
                                 onChange={handleChange}
                             />
                         </FormGroup>
                     </Col>
 
-
-
-                    <Col md={4}>
+                    <Col md={3}>
                         <FormGroup>
-                            <Label> # of Bedrooms</Label>
+                            <Label>Max Nights</Label>
                             <Input
                                 type='number'
-                                name='bedrooms'
-                                id='bedrooms'
-                                value={inputs.bedrooms}
+                                name='max_nights'
+                                id='max_nights'
+                                value={inputs.max_nights || maxNights}
                                 onChange={handleChange}
                             />
                         </FormGroup>
                     </Col>
+
+
+                 
                 </Row>
             <div className='btn-group'>
                 <Button className='save-btn' style={{ backgroundColor: '#406c47'}}>Get Price</Button>

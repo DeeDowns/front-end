@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { Button, Label, FormGroup, Input, Form } from 'reactstrap'
+import * as yup from 'yup'
+import { Button, Label, FormGroup, Input, Form, FormText } from 'reactstrap'
 import '../styles/Register.css'
+import formSchema from '../validation/formSchema'
+import { TweenMax } from 'gsap'
 
 
 const intitialRegisterForm = {
@@ -26,12 +29,18 @@ const Register = (props) => {
 
   let history = useHistory()
 
-  const handleChange = event => {
-    setUserRegister({
-      ...userRegister,
-      [event.target.name]: event.target.value
-    })
-  }
+  const regHrTop = useRef(null)
+  const regHrBottom = useRef(null)
+
+  useEffect(() => {
+    TweenMax.to(
+      regHrTop.current, 3, {y: 40}, {y: -40},
+    )
+    TweenMax.to(
+      regHrBottom.current,  3, {y: -40}, {y: 40}
+    )
+  }, [])
+
   const register = event => {
     event.preventDefault()
     axiosWithAuth().post('/api/auth/register', userRegister)
@@ -45,48 +54,90 @@ const Register = (props) => {
         console.log(err.message, err.name)
       })
   }
+
+  const inputChange = (name, value) => {
+    yup
+      .reach(formSchema, name)
+      .validate(value)
+      .then(valid => {
+        setFormErrors({
+          ...formErrors,
+          [name]: ''
+        })
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0]
+        })
+      })
+      // .setUserRegister({
+      //   ...userRegister,
+      //   [name]: value
+      // })
+  }
+
+  const handleChange = event => {
+    setUserRegister({
+      ...userRegister,
+      [event.target.name]: event.target.value
+    })
+    inputChange(event.target.name, event.target.value)
+  }
   return (
-      <Form className='register-form' onSubmit={register}>
-        <h2>Register</h2>
-        <FormGroup>
-          <Label>Name:&nbsp;
-            <Input
-              type='text'
-              name='name'
-              value={userRegister.name}
-              placeholder='name'
-              onChange={handleChange}
-            />
-          </Label>
-        </FormGroup>
+      <div className='form-container'>
 
-        <FormGroup>
-          <Label>Email:&nbsp;
-            <Input
-              type='email'
-              name='email'
-              value={userRegister.email}
-              placeholder='email'
-              onChange={handleChange}
-            />
-          </Label>
-        </FormGroup>
+        <hr className='top' ref={regHrTop}/>
 
-        <FormGroup>
-          <Label>Password:&nbsp;
-            <Input
-              type='password'
-              name='password'
-              value={userRegister.password}
-              placeholder='password'
-              onChange={handleChange}
-            />
-          </Label>
-        </FormGroup>
+        <Form className='register-form' onSubmit={register}>
+          <div>
+            <FormText className='errorText'>{formErrors.name}</FormText>
+            <FormText className='errorText'>{formErrors.email}</FormText>
+            <FormText className='errorText'>{formErrors.password}</FormText>
+          </div>
+          <FormGroup>
+            <Label>Name:&nbsp;
+              <Input
+                type='text'
+                name='name'
+                value={userRegister.name}
+                placeholder='Type your name'
+                onChange={handleChange}
+              />
+            </Label>
+          </FormGroup>
 
-    
-      <Button color='success'>Sign Up</Button>
-    </Form>
+          <FormGroup>
+            <Label>Email:&nbsp;
+              <Input
+                type='email'
+                name='email'
+                value={userRegister.email}
+                placeholder='Type your email'
+                onChange={handleChange}
+              />
+            </Label>
+          </FormGroup>
+
+          <FormGroup>
+            <Label>Password:&nbsp;
+              <Input
+                type='password'
+                name='password'
+                value={userRegister.password}
+                placeholder='Type your password'
+                onChange={handleChange}
+              />
+            </Label>
+          </FormGroup>
+
+      
+        <Button style={{ backgroundColor: '#406c47'}}>Sign Up</Button>
+      </Form>
+
+      <hr className='bottom' ref={regHrBottom}/>
+
+    </div>
 
 
   )

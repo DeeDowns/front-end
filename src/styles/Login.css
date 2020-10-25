@@ -1,11 +1,25 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container hr {
+  border-top: 3px solid black
+}
+
 .login-form {
   width: 50%;
-  margin-top: 5%;
+  margin: 2%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
 
 }
 
@@ -46,5 +60,6 @@ form .btn {
   font-size: 1.5rem;
   margin: 1%;
   padding: 1%;
+  width: 20%;
 
 }

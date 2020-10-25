@@ -16,13 +16,7 @@ const initialAddInputs = {
   guests_included: '',
   accomodates: '',
   minumum_nights: '',
-  maximum_nights: '',
-  // id: new Date(),
-  // parking: '',
-  // leaseableArea: ''
-   // state: '',
-   // property_type: '',
-  
+  maximum_nights: ''
 }
 
 const AddProperty = (props) => {
@@ -165,29 +159,8 @@ const AddProperty = (props) => {
           onChange={handleChanges}
         />
       </FormGroup>
-
-      {/* <FormGroup>
-        <Label>Leaseable Area</Label>
-        <Input
-          type='text'
-          name='leaseableArea'
-          id='leaseableArea'
-          value={addInputs.leaseableArea}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-     <FormGroup>
-        <Label>Parking</Label>
-        <Input
-          type='text'
-          name='parking'
-          id='parking'
-          value={addInputs.parking}
-          onChange={handleChanges}
-        />
-      </FormGroup>
-          
-     <FormGroup>
+   
+     {/* <FormGroup>
         <Label>Property Type</Label>
         <Input
           type='select'
@@ -203,8 +176,9 @@ const AddProperty = (props) => {
           <option>Room </option>
           <option>Other </option>
         </Input>
-      </FormGroup>
-      <FormGroup>
+      </FormGroup> */}
+
+      {/* <FormGroup>
         <Label>State</Label>
         <Input
           type='select'
@@ -265,9 +239,9 @@ const AddProperty = (props) => {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </Input> 
-      </FormGroup> */}
+      </FormGroup>  */}
       </Row>
-      <Button className='add-btn' color='success'>Add</Button>
+      <Button className='add-btn'  style={{ backgroundColor: '#406c47'}}>Add</Button>
       
     </Form>
   )
