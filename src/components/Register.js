@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import { Button, Label, FormGroup, Input, Form, FormText } from 'reactstrap'
 import '../styles/Register.css'
 import formSchema from '../validation/formSchema'
+import { TweenMax } from 'gsap'
 
 
 const intitialRegisterForm = {
@@ -27,6 +28,18 @@ const Register = (props) => {
   const [formErrors, setFormErrors] = useState(intitialRegisterFormErrors)
 
   let history = useHistory()
+
+  const regHrTop = useRef(null)
+  const regHrBottom = useRef(null)
+
+  useEffect(() => {
+    TweenMax.to(
+      regHrTop.current, 3, {y: 40}, {y: -40},
+    )
+    TweenMax.to(
+      regHrBottom.current,  3, {y: -40}, {y: 40}
+    )
+  }, [])
 
   const register = event => {
     event.preventDefault()
@@ -74,7 +87,7 @@ const Register = (props) => {
   return (
       <div className='form-container'>
 
-        <hr className='top'/>
+        <hr className='top' ref={regHrTop}/>
 
         <Form className='register-form' onSubmit={register}>
           <div>
@@ -122,7 +135,7 @@ const Register = (props) => {
         <Button style={{ backgroundColor: '#406c47'}}>Sign Up</Button>
       </Form>
 
-      <hr className='bottom'/>
+      <hr className='bottom' ref={regHrBottom}/>
 
     </div>
 

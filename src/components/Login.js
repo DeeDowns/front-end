@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema'
 import { Button, Form, Label, FormGroup, Input, FormText } from 'reactstrap'
+import { TweenMax } from 'gsap'
 
 import '../styles/Login.css'
 
@@ -24,8 +25,17 @@ export default function Login(props) {
   const [formErrors, setFormErrors] = useState(intitialLoginFormErrors)
   const [user, setUser] = useState('')
   
+  const loginHrTop = useRef(null)
+  const loginHrBottom = useRef(null)
 
-
+  useEffect(() => {
+    TweenMax.to(
+      loginHrTop.current, 3, {y: 40}, {y: -40},
+    )
+    TweenMax.to(
+      loginHrBottom.current,  3, {y: -40}, {y: 40}
+    )
+  }, [])
 
   //so we can redirect to register page
   let history = useHistory()
@@ -87,7 +97,10 @@ export default function Login(props) {
 
   return (
     <div className='form-container'>
-      <hr className='top'/>
+
+      <hr className='top' ref={loginHrTop}/>
+
+
       <Form className='login-form' onSubmit={login}>
         <div>
           <FormText className='errorText'>{formErrors.email}</FormText>
@@ -119,7 +132,9 @@ export default function Login(props) {
         </FormGroup>
         <Button style={{ backgroundColor: '#406c47'}}>Login</Button>
       </Form>
-      <hr className='bottom'/>
+
+      <hr className='bottom' ref={loginHrBottom}/>
+
     </div>
   )
 }

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchProperties,  addListing  } from '../store/actions/propertiesActions'
 import PropertyCard from './PropertyCard'
 import AddProperty from './AddProperty'
 import OptimalPrice from './OptimalPrice'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 import { Button, Fade , Spinner, UncontrolledCollapse} from 'reactstrap'
 import '../styles/AllProperties.css'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { TweenMax } from 'gsap'
+
 
 
 const AllProperties = (props) => {
@@ -18,7 +20,13 @@ const AllProperties = (props) => {
   const [toggle, setToggle] = useState(false)
   const [fadeIn, setFadeIn] = useState(false)
   
+  const allPropsH1 = useRef(null)
 
+  useEffect(() => {
+    TweenMax.to(
+      allPropsH1.current, 3, {y: 20}, {y: -10},
+    )
+  }, [])
   //Ed's axios get request
   //useEffect hook here
 
@@ -45,7 +53,7 @@ const AllProperties = (props) => {
   return (
     <div className='main-container'>
       <div className='img-container'>
-        <h1>Welcome to your Property Dashboard</h1>
+        <h1 ref={allPropsH1}>Welcome to your Property Dashboard</h1>
       </div>
 
       <div className='price-div'>

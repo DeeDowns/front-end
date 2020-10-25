@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useRef } from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -7,6 +7,7 @@ import OptimalPrice from './OptimalPrice'
 
 import { Button, Spinner, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, UncontrolledCollapse } from 'reactstrap'
 import '../styles/Property.css'
+import { TweenMax } from 'gsap'
 
 
 
@@ -15,6 +16,14 @@ const Property = (props) => {
   console.log('PROPERTY', props)
   const { id } = useParams()
   let history = useHistory()
+
+  const propH1 = useRef(null)
+
+  useEffect(() => {
+    TweenMax.to(
+      propH1.current, 3, {y: 20}, {y: -10},
+    )
+  }, [])
 
   useEffect(() => {
     props.fetchPropertyById(id)
@@ -43,7 +52,7 @@ const Property = (props) => {
       {props.isLoading ? <h3>Fetching Properties......<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></h3> : null}
       {props.property && <>
       <div className='img-container'>
-          <h1>{props.property.street_address}</h1>
+          <h1 ref={propH1}>{props.property.street_address}</h1>
       </div>
 
       <div className='price-div'>
