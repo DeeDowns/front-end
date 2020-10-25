@@ -86,40 +86,40 @@ export default function Login(props) {
   }
 
   return (
-    <Form className='login-form' onSubmit={login}>
-      <div>
-        <h2>Login</h2>
-      </div>
+    <div className='form-container'>
+      <hr className='top'/>
+      <Form className='login-form' onSubmit={login}>
+        <div>
+          <FormText className='errorText'>{formErrors.email}</FormText>
+          <FormText className='errorText'>{formErrors.password}</FormText>
+        </div>
 
-      <div>
-        <FormText className='errorText'>{formErrors.email}</FormText>
-        <FormText className='errorText'>{formErrors.password}</FormText>
-      </div>
+        <FormGroup>
+          <Label>Email:&nbsp;
+            <Input
+              type='email'
+              name='email'
+              value={userLogin.email}
+              placeholder='Type your email'
+              onChange={onInputChange}
+            />
+          </Label>
+        </FormGroup>
 
-      <FormGroup>
-        <Label>Email:&nbsp;
-          <Input
-            type='email'
-            name='email'
-            value={userLogin.email}
-            placeholder='email'
-            onChange={onInputChange}
-          />
-        </Label>
-      </FormGroup>
-
-      <FormGroup>
-        <Label>Password:&nbsp;
-          <Input
-            type='password'
-            name='password'
-            value={userLogin.password}
-            placeholder='password'
-            onChange={onInputChange}
-          />
-        </Label>
-      </FormGroup>
-      <Button color='success'>Login</Button>
-    </Form>
+        <FormGroup>
+          <Label>Password:&nbsp;
+            <Input
+              type='password'
+              name='password'
+              value={userLogin.password}
+              placeholder='Type your password'
+              onChange={onInputChange}
+            />
+          </Label>
+        </FormGroup>
+        <Button style={{ backgroundColor: '#406c47'}}>Login</Button>
+      </Form>
+      <hr className='bottom'/>
+    </div>
   )
 }

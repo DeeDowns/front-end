@@ -21,14 +21,12 @@ label {
 }
 
 .edit-btn-group {
-    width: 30%;
+    width: 60%;
 }
 
-.save-btn {
-    font-size: 1.5rem;
+.edit-btn-group .save-btn,
+.edit-btn-group .cancel-btn{
+    font-size: 2rem;
     margin: 1%;
-}
-.edit-btn-group .cancel-btn {
-    width: 30%;
-    margin: 1%;
+    width: 45%
 }

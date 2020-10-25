@@ -4,8 +4,9 @@ export default function Home(props) {
   return (
    <div className='home-container'>
      <div className='welcome-container'>
-       <a href='https://agitated-morse-a55b40.netlify.app'>Airbnb Optimal Pricer <br/> 
-       </a></div>
+       <h1>Manage and price your properties with AirPrice!</h1>
+       <h2>AirPrice is a data-driven application designed to predict optimal pricing of properties based on common Airbnb listing variables such as number of bedrooms, bathrooms, beds, and other amenities.</h2>
+      </div>
    </div>
   )
 }

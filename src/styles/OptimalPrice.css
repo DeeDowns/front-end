@@ -1,6 +1,6 @@
 .price-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -25,31 +25,32 @@
 }
 
 .card {
-    padding: 2%; 
+    padding: 1%; 
+}
+
+.predictor-container {
+    margin-bottom: 2%;
 }
 
 .predictor-container .card-title {
     width: 70%;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     text-align: center;
-   
 }
 
 .form-group {
     margin: 0 0 1% 1%;
     padding: 1%;
-    width: 80%
+    width: 50%
 }
 
 .form-group label {
     width: 95%;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .btn-group {
-    width: 30%;
+    width: 15%;
     margin: 1%;
-}
-
-.col-md-4 {
-    margin: 0;
 }

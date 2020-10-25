@@ -45,11 +45,14 @@ const AllProperties = (props) => {
   return (
     <div className='main-container'>
       <div className='img-container'>
-        <h1>Welcome!</h1>
+        <h1>Welcome to your Property Dashboard</h1>
       </div>
 
       <div className='price-div'>
-      <Button className='price-btn' style={{ backgroundColor: '#406c47'}} id='toggler' > Optimal Price Calculator</Button>
+      <h2>Want to see how much a potential property could make?</h2>
+      <h3>Try out the Optimal Price Calculator</h3>
+      <Button className='price-btn' style={{ backgroundColor: '#406c47', fontSize: '1.8rem'}} id='toggler' > Optimal Price Calculator</Button>
+      
       <UncontrolledCollapse toggler='#toggler'>
         <OptimalPrice />
        </UncontrolledCollapse>
@@ -58,9 +61,10 @@ const AllProperties = (props) => {
 
       <div className='all-properties-container'>
         <div className='listing-container'>
-          {props.isLoading ? <h3>Fetching Properties...<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></h3> : null}
+          {props.isLoading ? <p>Fetching Properties...<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></p> : null}
           
           <h2>Your Properties</h2>
+          <h3 className='property-sub'>View and make changes to your exisitng properties</h3>
           {properties.map((property, indx) => (
             <Link key={property.id} to={`/properties/${property.id}`}>
               <div className='card-img'></div>
@@ -71,6 +75,7 @@ const AllProperties = (props) => {
         </div>
         <div className='add-listing-container'>
           <h2>Have an additional property?</h2>
+          {toggle ? null : <h3>Add a new property by filling out a simple form</h3>}
           <Button className='toggle-add' style={{ backgroundColor: '#406c47'}} onClick={handleAddToggle}>{toggle ? 'Close' : 'Open Form'}</Button>
           <Fade in={fadeIn}>
               <AddProperty addListing={addListing} setToggle={setToggle} toggle={toggle}/>

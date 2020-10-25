@@ -43,10 +43,11 @@ const Property = (props) => {
       {props.isLoading ? <h3>Fetching Properties......<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></h3> : null}
       {props.property && <>
       <div className='img-container'>
-          <h1>Your Property: <br/>{props.property.street_address}</h1>
+          <h1>{props.property.street_address}</h1>
       </div>
 
       <div className='price-div'>
+      <h2>Want to see how much this property could make?</h2>
       <Button className='price-btn' style={{ backgroundColor: '#406c47'}} id='toggler' > Optimal Price Calculator</Button>
       <UncontrolledCollapse toggler='#toggler'>
         <OptimalPrice />
