@@ -48,7 +48,7 @@ export default function Login(props) {
     //axiosWithAuth post request to get token from server
     axiosWithAuth().post('/api/auth/login', userLogin)
       .then(res => {
-        console.log(res)
+        // console.log(res)
 
         //send token to local storage
         localStorage.setItem('token', res.data.token)
@@ -58,11 +58,11 @@ export default function Login(props) {
         history.push('/properties')
       })
       .catch(err => {
-        console.log(err)
+        // console.log(err)
       })
   }
 
-  console.log(user)
+  // console.log(user)
 
   const inputChange = (name, value) => {
     yup

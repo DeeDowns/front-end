@@ -45,13 +45,13 @@ const Register = (props) => {
     event.preventDefault()
     axiosWithAuth().post('/api/auth/register', userRegister)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
 
         localStorage.setItem('token', res.data.password)
         history.push('/login')
       })
       .catch(err => {
-        console.log(err.message, err.name)
+        // console.log(err.message, err.name)
       })
   }
 
@@ -71,10 +71,6 @@ const Register = (props) => {
           [name]: err.errors[0]
         })
       })
-      // .setUserRegister({
-      //   ...userRegister,
-      //   [name]: value
-      // })
   }
 
   const handleChange = event => {

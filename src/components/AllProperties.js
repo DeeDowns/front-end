@@ -34,10 +34,10 @@ const AllProperties = (props) => {
     axiosWithAuth().get('/api/properties')
       .then(res => {
         setProperties(res.data.properties)
-        console.log(res.data.properties)
+        // console.log(res.data.properties)
       })
       .catch(err => {
-        console.log(err.message)
+        // console.log(err.message)
       })
   }
 
@@ -69,7 +69,7 @@ const AllProperties = (props) => {
 
       <div className='all-properties-container'>
         <div className='listing-container'>
-          {props.isLoading ? <p>Fetching Properties...<Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></p> : null}
+          {props.isLoading ? <div><p>Fetching Properties...</p><Spinner type="grow" color="success" style={{ width: '6rem', height: '6rem' }}/></div>: null}
           
           <h2>Your Properties</h2>
           <h3 className='property-sub'>View and make changes to your exisitng properties</h3>
@@ -96,7 +96,6 @@ const AllProperties = (props) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     properties: state.propertiesReducer.properties,
     isLoading: state.propertiesReducer.isLoading,

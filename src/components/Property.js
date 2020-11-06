@@ -13,7 +13,6 @@ import { TweenMax } from 'gsap'
 
 
 const Property = (props) => {
-  console.log('PROPERTY', props)
   const { id } = useParams()
   let history = useHistory()
 
@@ -29,9 +28,6 @@ const Property = (props) => {
     props.fetchPropertyById(id)
   }, [id])
 
-  // console.log(props)
-  
-
    const handleDelete = event => {
      event.preventDefault()
      axiosWithAuth().delete(`/api/properties/${id}`)
@@ -40,12 +36,11 @@ const Property = (props) => {
        history.push('/properties')
      })
      .catch(err => {
-       console.log(err)
+      //  console.log(err)
      })
 
    }
 
-    console.log('PROPS', props.property)
   return (
     <div className='main-container'>
       

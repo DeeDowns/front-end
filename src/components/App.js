@@ -15,7 +15,7 @@ import OptimalPrice from './OptimalPrice'
 import '../styles/App.css'
 
 function App(props) {
-  console.log('APP', props)
+  // console.log('APP', props)
 
   useEffect(() => {
     props.fetchProperties()
@@ -28,7 +28,6 @@ function App(props) {
           <img src={require('../assests/BW-AirPrice.gif')} alt='logo'/>
         </Link>
         <nav>
-          {/* <a href='https://agitated-morse-a55b40.netlify.app'>Home</a> */}
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
           <Link to='/properties'>Dashboard</Link>
@@ -73,9 +72,7 @@ const mapStateToProps = state => {
     property: state.propertiesReducer.property,
     isLoading: state.propertiesReducer.isLoading,
     error: state.propertiesReducer.error,
-    optimalPrice: state.optimalPriceReducer.predictedPrice,
-    // isLoading: state.optimalPriceReducer.isLoading,
-    // error: state.optimalPriceReducer.error,
+    optimalPrice: state.optimalPriceReducer.predictedPrice
   }
 }
 

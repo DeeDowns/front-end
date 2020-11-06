@@ -21,9 +21,8 @@ const initialAddInputs = {
 
 const AddProperty = (props) => {
   const [addInputs, setAddInputs] = useState(initialAddInputs)
-  // const [toggle, setToggle] = useState(false)
   const history = useHistory()
-  console.log('ADD', props)
+  // console.log('ADD', props)
   
  
 
@@ -37,14 +36,12 @@ const AddProperty = (props) => {
   const submit = event => {
     event.preventDefault()
     props.addListing(addInputs)
-    console.log(addInputs)
+    // console.log(addInputs)
 
     setAddInputs(initialAddInputs)
     props.setToggle(false)
     history.push('/properties')
   }
-
-  console.log(props.properties)
 
   return (
     <Form className='add-form' onSubmit={submit}>
