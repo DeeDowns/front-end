@@ -143,7 +143,7 @@ const OptimalPrice = props => {
                                 type='number'
                                 name='min_nights'
                                 id='min_nights'
-                                value={''} // trouble with making value minNights, input number shows up, but get 422 error when trying to get optimal price
+                                value={inputs.min_nights || ''} // trouble with making value minNights, input number shows up, but get 422 error when trying to get optimal price
                                 onChange={handleChange}
                             />
                         </FormGroup>
@@ -156,7 +156,7 @@ const OptimalPrice = props => {
                                 type='number'
                                 name='max_nights'
                                 id='max_nights'
-                                value={''} //same issue 
+                                value={inputs.max_nights || ''} //same issue 
                                 onChange={handleChange}
                             />
                         </FormGroup>
