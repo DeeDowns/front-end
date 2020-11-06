@@ -28,7 +28,7 @@
 }
 
 .img-container h1 {
-    font-size: 3.5rem;
+    font-size: 2rem;
     width: 35%;
     padding: 1%;
     text-align: center;
@@ -46,12 +46,12 @@
 }
 
 .price-div h2 {
-  font-size: 3rem;
+  font-size: 1.8rem;
   margin: 1%;
 }
 
 .price-div h3 {
-  font-size: 2rem;;
+  font-size: 1.6rem;;
 }
 
 .price-btn {
@@ -78,13 +78,13 @@
 .listing-container h2 {
   margin: 2%;
   width: 80%;
-  font-size: 3rem;
+  font-size: 1.8rem;
   padding-bottom: 1%;
   border-bottom: 3px solid #333
 }
 
 .listing-container .property-sub {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   width: 80%;
   text-align: center;
 }
@@ -102,13 +102,13 @@
   width: 80%;
   padding-bottom: 2%;
   border-bottom: 3px solid #333;
-  font-size: 3rem;
+  font-size: 1.8rem;
   margin: 2%;
 }
 
 
 .add-listing-container h3 {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   width: 80%;
   text-align: center;
 }
@@ -123,13 +123,13 @@
 }
 
 .toggle-add {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin: 1%;
   padding: 1%;
 }
 
 .listing-container h3 {
-  font-size: 4rem;
+  font-size: 1.6rem;
 }
 
 
@@ -138,4 +138,37 @@
   background-size: cover;
   width: 100%;
   padding: 35%;
+}
+
+@media (max-width: 800px) {
+  .img-container h1 {
+    width: 50%;
+  }
+
+  .listing-container {
+    /* flex-flow: column; */
+    width: 85%;
+  }
+
+  .listing-container a {
+    width: 35%;
+  }
+
+  .add-listing-container {
+    width: 85%;
+  }
+
+  .price-div .price-btn {
+    width: 35%;
+  }
+}
+
+@media (max-width: 500px) {
+  .listing-container a {
+    width: 50%;
+  }
+
+  .add-listing-container button {
+    width: 35%
+  }
 }

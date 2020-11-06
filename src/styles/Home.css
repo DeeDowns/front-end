@@ -16,8 +16,13 @@
     padding: 5%;
 }
 
+h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
 a {
-    font-size: 4rem;
+    font-size: 1.8rem;
     text-decoration: none;
     color: black;
 
@@ -27,3 +32,9 @@ a:hover {
     text-decoration: none;
     color: black; 
 }
+
+@media (max-width: 800px) {
+    .welcome-container {
+        width: 100%;
+    }
+ }

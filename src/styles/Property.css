@@ -18,11 +18,11 @@
 }
 
 .list-group-item h5 {
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .list-group-item p {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .button-container {
@@ -37,8 +37,61 @@
 .edit-btn,
 .delete-btn, 
 .back-btn{
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 1%;
     width: 45%
+}
+
+@media (max-width: 800px) {
+    .main-container .list-group {
+      width: 95%;
+    }
+
+    .main-container .list-group-item h5 {
+        font-size: 1.6rem;
+    }
+
+    .main-container .button-container{
+        width: 60%;
+
+    }
+  
+    .main-container .button-container .btn{
+        width: 30%;
+
+    }
+}
+
+
+@media (max-width: 500px) {
+    .list-group {
+        width: 95%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .list-group .list-group-item {
+        width: 40%;
+    
+    }
+
+    .list-group .list-group-item h5{
+        font-size: 1.4rem;
+    }
+
+    .list-group .list-group-item p{
+        font-size: 1.4rem;
+    }
+
+    .main-container .button-container{
+        width: 90%;
+
+    }
+
+
+    .main-container .button-container .btn{
+        width: 40%;
+
+    }
 }
 
