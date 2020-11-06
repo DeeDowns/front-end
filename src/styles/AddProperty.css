@@ -12,11 +12,11 @@
 }
 
 .add-form h2 {
-    font-size: 2rem
+    font-size: 1.8rem
 }
 
 label {
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .form-group {
@@ -26,11 +26,11 @@ label {
 }
 
 .form-control {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .add-btn {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin: 1%;
     padding: 1%;
  

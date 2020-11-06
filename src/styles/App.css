@@ -27,7 +27,7 @@ nav {
 
 
 nav a {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 3%;
     color: whitesmoke;
     transition: all .1s ease-in-out;  
@@ -47,5 +47,24 @@ header .img-link {
 header img {
     width: 90%;
     margin-left: 1%;
-    /* border: 3px solid red */
 }
+
+@media (max-width: 800px) {
+   header img {
+       width: 100%
+   }
+}
+
+@media (max-width: 500px) {
+    header {
+        flex-flow: column;
+    }
+
+    header .img-link {
+        width: 30%
+    }
+    
+    .propertiesContainer header nav {
+        width: 90%
+    }
+ }

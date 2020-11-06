@@ -40,11 +40,11 @@ const EditProperty = (props) => {
   useEffect(() => {
     axiosWithAuth().get(`/api/properties/${id}`)
       .then(res => {
-        console.log(res.data.properties)
+        // console.log(res.data.properties)
         setEditInputs(res.data.properties)
       })
       .catch(err => {
-        console.log(err)
+        // console.log(err)
       })
   }, [id])
 
@@ -58,7 +58,7 @@ const EditProperty = (props) => {
       history.push(`/properties/${id}`)
     })
     .catch(err => {
-      console.log(err)
+      // console.log(err)
     })
   }
 

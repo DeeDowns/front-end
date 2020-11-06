@@ -18,25 +18,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
-
 }
 
 
 h2 {
   text-align: center;
-  font-size: 2rem
+  font-size: 1.8rem
 }
 
 
 form label {
   text-align: left;
-  font-size: 2rem
+  font-size: 1.8rem
 }
 
 form .btn {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .form-group {
@@ -53,13 +50,30 @@ form .btn {
 }
 
 .errorText {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .btn {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin: 1%;
   padding: 1%;
   width: 20%;
+
+}
+
+@media (max-width: 800px) {
+  .login-form .form-group {
+    width: 60%;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-form {
+    width: 80%;
+    margin: 10% 0;
+  }
+  .login-form .form-group {
+    width: 70%;
+  }
 
 }

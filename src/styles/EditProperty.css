@@ -7,8 +7,12 @@
     align-items: center;
 }
 
-label {
+.edit-form h1 {
     font-size: 2rem;
+}
+
+label {
+    font-size: 1.8rem;
     width: 95%;
 }
 
@@ -26,7 +30,20 @@ label {
 
 .edit-btn-group .save-btn,
 .edit-btn-group .cancel-btn{
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 1%;
     width: 45%
+}
+
+
+@media (max-width: 800px) {
+    .edit-btn-group {
+        width: 95%;
+    }
+}
+
+@media (max-width: 500px) {
+    .edit-form {
+        width: 70%;
+    } 
 }

@@ -34,7 +34,7 @@
 
 .predictor-container .card-title {
     width: 70%;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -46,11 +46,33 @@
 
 .form-group label {
     width: 95%;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
+}
+
+.price-form .form-row .form-group {
+    width: 90%
 }
 
 .btn-group {
     width: 15%;
     margin: 1%;
+}
+
+@media (max-width: 800px) {
+    .price-form {
+        width: 100%;
+    }
+
+    .price-form .form-row .form-group {
+        width: 100%
+    }
+
+    .predictor-container {
+        width: 60%;
+    }
+
+    .predictor-container .card-title {
+        width: 85%;
+    }
 }
