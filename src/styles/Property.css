@@ -28,7 +28,7 @@
 .button-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 60%;
     margin: 2%;
     justify-content: center;
     align-items: center;
